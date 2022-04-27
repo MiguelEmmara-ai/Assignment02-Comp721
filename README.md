@@ -18,7 +18,7 @@ server, as learned in Assignment One and the first part of this course.
 3. Login            - Login drivers, check if the drivers is on the system
 
 # Screenshots
-![Screenshot 1](https://github.com/MiguelEmmara-ai/Assignment02-Comp721/tree/release/v1.0/screenshots/screencapture-localhost-assignment02-release-v1.PNG)
+![Screenshot 1](https://github.com/MiguelEmmara-ai/Assignment02-Comp721/blob/release/v1.0/screenshots/screencapture-localhost-assignment02-release-v1.png)
 
 # License
 Copyright 2022. Code released under the MIT license.
