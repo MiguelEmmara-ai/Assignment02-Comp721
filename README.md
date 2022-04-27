@@ -4,3 +4,21 @@ The aim of this assignment is to develop a better understanding of building web
 applications using simple Ajax techniques, PHP, and MySQL. It is assumed that have
 the knowledge and programming skills to work with PHP and MySQL PHP on the
 server, as learned in Assignment One and the first part of this course.
+
+# How To Install
+1. Download The Script
+2. Fire Up your web server (xampp/wamp)
+3. Paste Or Upload the file onto the webserver
+4. Acces the index.php
+5. For the first time instalation, you will run through the installation prompt
+
+# How To Use
+1. Book A Ride      - This page allow the passengers to book their taxi
+2. Become A Driver  - This page is for drivers to create their new account
+3. Login            - Login drivers, check if the drivers is on the system
+
+# Screenshots
+![Screenshot 1](https://github.com/MiguelEmmara-ai/Assignment02-Comp721/tree/release/v1.0/screenshots/screencapture-localhost-assignment02-release-v1.PNG)
+
+# License
+Copyright 2022. Code released under the MIT license.
