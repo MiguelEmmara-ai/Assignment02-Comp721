@@ -29,8 +29,6 @@ if (isset($_POST['signUp-button'])) {
 }
 
 ?>
-
-<body>
     <?php include('includes/frontend/nav.php'); ?>
     <!-- Start: Registration Form with Photo -->
     <section class="register-photo" style="margin-top: 60px;">
@@ -110,6 +108,3 @@ if (isset($_POST['signUp-button'])) {
     <!-- End: Registration Form with Photo -->
 
     <?php include('includes/frontend/footer.php'); ?>
-</body>
-
-</html>
