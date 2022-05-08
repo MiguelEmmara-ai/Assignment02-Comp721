@@ -63,7 +63,7 @@ A list of all the files in the system
         5. SQLfunction.php
 
     2. dbconf
-        1. settings.inc.config
+        1. settings.inc.config.php
         2. settings.php
 
     3.frontend
