@@ -36,7 +36,11 @@ List of things out of scope for this assignment:
 - Basic Personalize dashboard for drivers
 - Choose cars for bookings
 - Script Installation Wizards
+<<<<<<< HEAD
 - Layout slicing / partials
+=======
+- Layout Slicing
+>>>>>>> 53b8fa9d90a31679ea939537f385033fa2caa65b
 
 
 
@@ -64,7 +68,7 @@ A list of all the files in the system
         5. SQLfunction.php
 
     2. dbconf
-        1. settings.inc.config
+        1. settings.inc.config.php
         2. settings.php
 
     3.frontend
