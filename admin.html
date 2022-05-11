@@ -68,9 +68,9 @@
                     <h3 class="text-dark mb-4">Welcome Back, Driver </h3>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 text-end" style="margin-bottom: 30px;">
-                    <a class="btn btn-primary mx-1 mb-2" role="button" onclick="showall()">
+                    <a class="btn btn-primary mx-1 mb-2" role="button" onclick="showallHtml()">
                         <i class="fa fa-plus"></i>&nbsp;Show All Bookings </a>
-                    <a class="btn btn-primary mx-1 mb-2" role="button" onclick="shoAvailPassengers()">
+                    <a class="btn btn-primary mx-1 mb-2" role="button" onclick="shoAvailPassengersHtml()">
                         <i class="fa fa-plus"></i>&nbsp;Show All Available Bookings </a>
                     <a href="logout.php" class="btn btn-primary mb-2 disabled">Sign Out</a>
                 </div>
@@ -83,15 +83,17 @@
                             <p class="text-primary m-0 fw-bold">All Bookings</p>
                         </div>
                         <div class="col-md-3 py-2 text-end">
-                            <form class="form-inline" action="?" method="POST">
+                            <form class="form-inline" action="" method="POST">
                                 <div class="row g-3 align-items-center">
                                     <div class="col-auto">
-                                        <input class="form-control mb-2" type="text" name="booking-brn-number" placeholder="Booking Number">
+                                        <input class="form-control mb-2" type="text" name="booking" placeholder="Booking Number">
                                     </div>
                                     <div class="col-auto">
-                                        <button class="btn btn-primary flex-fill py-3" type="submit">
+                                        <!-- <button class="btn btn-primary flex-fill py-3" type="submit">
                                         <i class="far fa-paper-plane"></i> ASSIGN
-                                    </button>
+                                        </button> -->
+
+                                        <input class="btn btn-primary flex-fill py-3" name="submit" type="button" onClick="updateAssignCabHtml(booking.value)" value="Assign">
                                     </div>
                                 </div>
                             </form>
@@ -101,7 +103,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="table-responsive">
-                            <div id="txtHint">
+                            <div id="showAlliD">
                                 <b class="text-warning">Bookings info will be listed here.</b>
                             </div>
                         </div>

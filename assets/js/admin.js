@@ -6,7 +6,7 @@ function showall() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("txtHint").innerHTML = this.responseText;
+            document.getElementById("showAlliD").innerHTML = this.responseText;
         }
     }
     xmlhttp.open("GET", 'includes/backend/getAllBook.php', true);
@@ -21,10 +21,40 @@ function shoAvailPassengers() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("txtHint").innerHTML = this.responseText;
+            document.getElementById("showAlliD").innerHTML = this.responseText;
         }
     }
     xmlhttp.open("GET", 'includes/backend/getAvailBook.php', true);
+    xmlhttp.send();
+}
+
+/**
+ * This function shows all bookings by passing information to the server
+ * @send XML object
+ */
+function showallHtml() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("showAlliD").innerHTML = this.responseText;
+        }
+    }
+    xmlhttp.open("GET", 'includes/backend/getAllBookHtml.php', true);
+    xmlhttp.send();
+}
+
+/**
+ * This function shows all available (Unassigned) Passengers by passing information to the server
+ * @send XML object
+ */
+function shoAvailPassengersHtml() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("showAlliD").innerHTML = this.responseText;
+        }
+    }
+    xmlhttp.open("GET", 'includes/backend/getAvailBookHtml.php', true);
     xmlhttp.send();
 }
 
@@ -36,7 +66,7 @@ function updateAssignCab(bookingRefNo) {
     var xhttp = createRequest();
 
     if (bookingRefNo == "") {
-        document.getElementById("txtHint").innerHTML = "";
+        document.getElementById("showAlliD").innerHTML = "";
         return;
     }
 
@@ -49,6 +79,32 @@ function updateAssignCab(bookingRefNo) {
     };
 
     xhttp.open("GET", "includes/backend/assignCab.php?q=" + String(bookingRefNo), true);
+    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhttp.send(null);
+    window.location.reload();
+}
+
+/**
+ * This function is to assign taxi to a booking number
+ * @send XML object
+ */
+function updateAssignCabHtml(bookingRefNo) {
+    var xhttp = createRequest();
+
+    if (bookingRefNo == "") {
+        document.getElementById("showAlliD").innerHTML = "";
+        return;
+    }
+
+    xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+            alert(xhttp.responseText);
+        }
+    };
+
+    xhttp.open("GET", "includes/backend/assignCabHtml.php?q=" + String(bookingRefNo), true);
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhttp.send(null);
     window.location.reload();

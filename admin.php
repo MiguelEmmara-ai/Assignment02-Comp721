@@ -62,21 +62,12 @@ if (isset($_POST['booking-brn-number'])) {
                             </div>
                         </form>
                     </div>
-                    <!-- <div class="col-12 col-sm-7 col-md-6 text-end" style="margin: 0px;padding: 5px 15px;">
-                            <button class="btn btn-warning btn-sm" id="zoom_in" type="button" zoomclick="ChangeZoomLevel(-10);" style="margin: 2px;">
-                                <i class="fa fa-search-plus"></i>
-                            </button>
-                            <button class="btn btn-warning btn-sm" id="zoom_out" type="button" zoomclick="ChangeZoomLevel(-10);" style="margin: 2px;">
-                                <i class="fa fa-search-minus"></i>
-                            </button>
-                            <a href="logout.php" class="btn btn-primary btn-sm">Sign Out</a>
-                        </div> -->
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
-                        <div id="txtHint">
+                        <div id="showAlliD">
                             <b class="text-warning">Bookings info will be listed here.</b>
                         </div>
                     </div>
