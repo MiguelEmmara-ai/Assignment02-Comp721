@@ -36,16 +36,14 @@ List of things out of scope for this assignment:
 - Basic Personalize dashboard for drivers
 - Choose cars for bookings
 - Script Installation Wizards
-<<<<<<< HEAD
 - Layout slicing / partials
-=======
-- Layout Slicing
->>>>>>> 53b8fa9d90a31679ea939537f385033fa2caa65b
+
 
 
 
 
 ------------------------------------------------------------------------------------------------
+
 
 
 
