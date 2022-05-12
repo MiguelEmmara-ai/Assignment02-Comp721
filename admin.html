@@ -68,11 +68,12 @@
                     <h3 class="text-dark mb-4">Welcome Back, Driver </h3>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 text-end" style="margin-bottom: 30px;">
+                    <a class="btn btn-primary mx-1 mb-2" role="button" onclick="showRecentHtml()">
+                        <i class="fa fa-plus"></i>&nbsp;Show Recent Bookings </a>
                     <a class="btn btn-primary mx-1 mb-2" role="button" onclick="showallHtml()">
                         <i class="fa fa-plus"></i>&nbsp;Show All Bookings </a>
                     <a class="btn btn-primary mx-1 mb-2" role="button" onclick="shoAvailPassengersHtml()">
                         <i class="fa fa-plus"></i>&nbsp;Show All Available Bookings </a>
-                    <a href="logout.php" class="btn btn-primary mb-2 disabled">Sign Out</a>
                 </div>
             </div>
             <!-- Start: TableSorter -->
@@ -89,11 +90,10 @@
                                         <input class="form-control mb-2" type="text" name="booking" placeholder="Booking Number">
                                     </div>
                                     <div class="col-auto">
-                                        <!-- <button class="btn btn-primary flex-fill py-3" type="submit">
-                                        <i class="far fa-paper-plane"></i> ASSIGN
-                                        </button> -->
-
-                                        <input class="btn btn-primary flex-fill py-3" name="submit" type="button" onClick="updateAssignCabHtml(booking.value)" value="Assign">
+                                        <input class="btn btn-primary flex-fill py-3" name="sbutton" type="button" onClick="updateAssignCabHtml(booking.value)" value="Assign">
+                                    </div>
+                                    <div class="col-auto">
+                                        <input class="btn btn-primary flex-fill py-3" name="bsearch" type="button" onClick="showRecentHtml()" value="Search">
                                     </div>
                                 </div>
                             </form>
@@ -103,7 +103,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="table-responsive">
-                            <div id="showAlliD">
+                            <div id="tableID">
                                 <b class="text-warning">Bookings info will be listed here.</b>
                             </div>
                         </div>
