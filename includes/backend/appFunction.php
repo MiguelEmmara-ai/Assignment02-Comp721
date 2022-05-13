@@ -1,10 +1,4 @@
 <?php
-if (!defined('MY_CONSTANT')) {
-    // You can show a message
-    die('Access not allowed!');
-    exit;  // This line is needed to stop script execution
-}
-
 /**
  * check If User LoggedIn, if not then redirect him to login page
  * 

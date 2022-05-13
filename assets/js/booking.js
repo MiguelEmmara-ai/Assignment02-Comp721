@@ -51,7 +51,7 @@ function addBooking() {
         if (validated) {
 
             // encodeURIComponent(bookingDate)
-            var url = "includes/bookingProcess.php";
+            var url = "includes/backend/booking.php";
             var params = "customerName=" + customerName +
                 "&bookingDate=" + encodeURIComponent(bookingDate) +
                 "&bookingTime=" + encodeURIComponent(bookingTime) +
@@ -85,7 +85,7 @@ function addBooking() {
                     icon: "error",
                     button: "OK",
                 }).then(function() {
-                    window.location.href = "booking.php";
+                    window.location.href = "booking.html";
                 })
             });
         }
@@ -102,7 +102,7 @@ function validateDate(date, todaysdate) {
                 icon: "error",
                 button: "OK",
             }).then(function() {
-                window.location.href = "booking.php";
+                window.location.href = "booking.html";
             })
         });
         return false;
@@ -120,7 +120,7 @@ function validateTime(inputTime, currentTime) {
                 icon: "error",
                 button: "OK",
             }).then(function() {
-                window.location.href = "booking.php";
+                window.location.href = "booking.html";
             })
         });
         return false;
