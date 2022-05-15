@@ -1,6 +1,8 @@
 <?php
 
 // TODO
+// ikutin aja https://github.com/mattmallow-AUT/AUT-COMP721-Assignment-2/blob/main/booking.php
+// ganti nama 
 
 // Define variables and initialize with empty values
 global $fName;
