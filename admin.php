@@ -58,9 +58,14 @@ if (isset($_POST['booking-brn-number'])) {
                                     <div class="col-auto">
                                         <input class="form-control mb-2" type="text" name="booking-brn-number" placeholder="Booking Number">
                                     </div>
+                                    
                                     <div class="col-auto">
-                                        <button class="btn btn-primary flex-fill py-3" type="submit">
+                                        <button class="btn btn-primary flex-fill py-2 mb-2" type="submit">
                                             <i class="far fa-paper-plane"></i> ASSIGN
+                                        </button>
+
+                                        <button class="btn btn-primary flex-fill py-2 mb-2" name="sbutton" id="sbutton" type="submit">
+                                        <i class="fas fa-search"></i></i> Search
                                         </button>
                                     </div>
                                 </div>
