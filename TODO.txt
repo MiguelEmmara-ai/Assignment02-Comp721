@@ -1,5 +1,3 @@
-A button to display list of bookings with a pickup time within 2 hours from the current time (recent bookings) (Unassigned)
-Create mysql function to display recent bookings (Unassigned)
 Add search button next to assign btn on admin, next to booking number input
 Display current date and time on booking.html
 Add more thorough comments
