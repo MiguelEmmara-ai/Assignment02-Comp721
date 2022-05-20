@@ -1,9 +1,9 @@
 <?php
 
 // Since this header file is everywhere,
-// we can check if includes/dbconf/settings.php is not exist
+// we can check if includes/(dbconf or backend)/settings.php is not exist
 // if true then we go through the script installation
-if (!file_exists('includes/dbconf/settings.php')) {
+if (!file_exists('includes/dbconf/settings.php') || !file_exists('includes/backend/settings.php')) {
     header('location:install.php');
     die();
 }
