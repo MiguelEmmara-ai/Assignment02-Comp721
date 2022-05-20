@@ -130,7 +130,6 @@ if (isset($_POST['book-button'])) {
                             ?>
                             <p><strong>Pick-Up Time</strong><br></p>
                             <input class="form-control form-control-lg" type="time" id="pickUpTime" name="pickUpTime" required="" value=<?php echo $dateTime->format("H:i A"); ?>>
-                            <!-- <?php echo $dateTime->format("H:i A"); ?> -->
                         </div>
                         <div class="d-flex d-xxl-flex justify-content-xxl-center mb-3">
                             <input class="btn btn-secondary flex-fill" type="submit" name="book-button" style="background: rgb(254,209,54);" value="Book">
