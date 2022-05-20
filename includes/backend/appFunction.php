@@ -28,7 +28,7 @@ function checkUserLoggedIn()
  */
 function checkUserLoggedInRedirect()
 {
-    // Check if the user is already logged in, if yes then redirect him to welcome page
+    // Check if the user is already logged in, if yes then redirect him to admin page
     if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
         header("location: admin.php");
         exit;

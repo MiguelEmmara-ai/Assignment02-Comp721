@@ -11,12 +11,61 @@
 <html>
 
 <?php
+
+/*
+|--------------------------------------------------------------------------
+| Access Restriction
+|--------------------------------------------------------------------------
+|
+| Here is the declaration that user or visitor
+| can access the page
+| all the define('MY_CONSTANT', 1) meaning pages that can be access.
+|
+ */
+
 define('MY_CONSTANT', 1);
+
+/*
+|--------------------------------------------------------------------------
+| Title Variable
+|--------------------------------------------------------------------------
+|
+| Title variable used to
+| make dynamic title depending
+| on the page where user are on.
+|
+ */
+
 $title = "Cabs Online | Book A Taxi Ride With Us Today!";
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/header
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/header
+| for displaying the header
+|
+ */
 require dirname(__FILE__) . "/includes/frontend/header.php";?>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
-    <?php require 'includes/frontend/nav.php';?>
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/nav
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/nav
+| for displaying the navbar
+|
+ */
+
+require 'includes/frontend/nav.php';
+?>
     <!-- Start: Header Blue -->
     <header class="header-blue">
         <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
@@ -244,7 +293,22 @@ require dirname(__FILE__) . "/includes/frontend/header.php";?>
         </div>
     </section>
 
-    <?php require 'includes/frontend/footer.php';?>
+    <?php
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/footer
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/footer
+| for displaying the footer
+|
+ */
+
+require 'includes/frontend/footer.php';
+
+?>
 </body>
 
 </html>
