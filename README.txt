@@ -28,6 +28,9 @@ How To Use
     3. Then Click on Book
     4. A Prompt will pop up and A driver will be with you shortly!
 
+Documentation
+Full documentation can be found over on https://docscabs.miguelemmara.me/   
+
 Addition Note
 
 List of things out of scope for this assignment:
@@ -79,17 +82,16 @@ A list of all the files in the system
     1. screencapture-localhost-assignment02-release-v1.png
 
 1. about.php
-2. admin.html
-3. admin. php
-4. booking.html
-5. booking.php
-6. cabsonline.sql
-7. index.php
-8. install.php
-9. LICENSE
-10. login.php
-11. logout.php
-12. mysqlcommand.txt
-13. README.md
-14. README.txt
-15. register.php
+2. admin.php
+3. booking.html
+4. booking.php
+5. cabsonline.sql
+6. index.php
+7. install.php
+8. LICENSE
+9. login.php
+10. logout.php
+11. mysqlcommand.txt
+12. README.md
+13. README.txt
+14. register.php

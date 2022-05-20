@@ -5,7 +5,7 @@ define('MY_CONSTANT', 1);
 include(dirname(__FILE__) . "/../dbconf/settings.php");
 
 mysqli_select_db($conn, $dbnm);
-$query = "SELECT * FROM passengers";
+$query = "SELECT * FROM passengers WHERE pickUpTime > now() - interval 2 hour AND status = 'Unassigned';";
 $result = mysqli_query($conn, $query);
 ?>
 

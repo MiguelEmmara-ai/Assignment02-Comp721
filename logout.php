@@ -13,9 +13,9 @@ define('MY_CONSTANT', 1);
 // Initialize the session
 session_start();
 $title = "Logging Out...";
-include dirname(__FILE__)."/includes/frontend/header.php";
-include dirname(__FILE__)."/includes/backend/appFunction.php";
-include dirname(__FILE__)."/includes/backend/SQLfunction.php";
+require dirname(__FILE__) . "/includes/frontend/header.php";
+require dirname(__FILE__) . "/includes/backend/appFunction.php";
+require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
 
 logoutDrivers();
 ?>

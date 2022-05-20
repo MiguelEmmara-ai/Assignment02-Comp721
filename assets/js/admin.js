@@ -1,15 +1,15 @@
 /**
- * This function shows recent bookings (within 2 hours) by passing information to the server
+ * This function shows all bookings by passing information to the server
  * @send XML object
  */
-function showRecentHtml() {
+function showall() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("tableID").innerHTML = this.responseText;
         }
     }
-    xmlhttp.open("GET", 'includes/backend/getRecentBookHtml.php', true);
+    xmlhttp.open("GET", 'includes/backend/getAllBook.php', true);
     xmlhttp.send();
 }
 
@@ -29,25 +29,10 @@ function showRecent() {
 }
 
 /**
- * This function shows all bookings by passing information to the server
- * @send XML object
- */
-function showall() {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("tableID").innerHTML = this.responseText;
-        }
-    }
-    xmlhttp.open("GET", 'includes/backend/getAllBook.php', true);
-    xmlhttp.send();
-}
-
-/**
  * This function shows all available (Unassigned) Passengers by passing information to the server
  * @send XML object
  */
-function shoAvailPassengers() {
+function showAvailPassengers() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -59,33 +44,31 @@ function shoAvailPassengers() {
 }
 
 /**
- * This function shows all bookings by passing information to the server
- * @send XML object
- */
-function showallHtml() {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("tableID").innerHTML = this.responseText;
-        }
-    }
-    xmlhttp.open("GET", 'includes/backend/getAllBookHtml.php', true);
-    xmlhttp.send();
-}
-
-/**
  * This function shows all available (Unassigned) Passengers by passing information to the server
  * @send XML object
  */
-function shoAvailPassengersHtml() {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
+function searchPassengers(bookingRefNo) {
+    var xhttp = createRequest();
+
+    if (bookingRefNo == "") {
+        // document.getElementById("tableID").innerHTML = "";
+        Swal.fire(
+            'Missing Something?',
+            'You Forgotten To Put The Booking Number<br><br>Want to know the recent books?<br>Click On The "Show Recent Bookings"',
+            'question'
+        )
+        return;
+    }
+
+    xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("tableID").innerHTML = this.responseText;
         }
     }
-    xmlhttp.open("GET", 'includes/backend/getAvailBookHtml.php', true);
-    xmlhttp.send();
+    xhttp.open("GET", "includes/backend/searchBook.php?number=" + String(bookingRefNo), true);
+    xhttp.send();
 }
 
 /**
@@ -104,49 +87,19 @@ function updateAssignCab(bookingRefNo) {
 
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
-            alert(xhttp.responseText);
+            Swal.fire(
+                'Congratulations!',
+                xhttp.responseText,
+                'success'
+            ).then(function() {
+                location.reload();
+            });
         }
     };
 
     xhttp.open("GET", "includes/backend/assignCab.php?q=" + String(bookingRefNo), true);
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhttp.send(null);
-    window.location.reload();
-}
-
-/**
- * This function is to assign taxi to a booking number
- * @send XML object
- */
-function updateAssignCabHtml(bookingRefNo) {
-    var xhttp = createRequest();
-
-    if (bookingRefNo == "") {
-        $(document).ready(function() {
-
-            swal({
-                html: true,
-                title: "Oh No...",
-                text: "Please Fill The Booking Reference",
-                icon: "error",
-                button: "OK",
-            })
-        });
-        return;
-    }
-
-    xhttp = new XMLHttpRequest();
-
-    xhttp.onreadystatechange = function() {
-        if (xhttp.readyState == 4 && xhttp.status == 200) {
-            alert(xhttp.responseText);
-        }
-    };
-
-    xhttp.open("GET", "includes/backend/assignCabHtml.php?q=" + String(bookingRefNo), true);
-    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhttp.send(null);
-    window.location.reload();
 }
 
 /**
