@@ -6,10 +6,25 @@ function showall() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("txtHint").innerHTML = this.responseText;
+            document.getElementById("tableID").innerHTML = this.responseText;
         }
     }
     xmlhttp.open("GET", 'includes/backend/getAllBook.php', true);
+    xmlhttp.send();
+}
+
+/**
+ * This function shows recent bookings (within 2 hours) by passing information to the server
+ * @send XML object
+ */
+function showRecent() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("tableID").innerHTML = this.responseText;
+        }
+    }
+    xmlhttp.open("GET", 'includes/backend/getRecentBook.php', true);
     xmlhttp.send();
 }
 
@@ -21,7 +36,7 @@ function shoAvailPassengers() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("txtHint").innerHTML = this.responseText;
+            document.getElementById("tableID").innerHTML = this.responseText;
         }
     }
     xmlhttp.open("GET", 'includes/backend/getAvailBook.php', true);
@@ -36,7 +51,7 @@ function updateAssignCab(bookingRefNo) {
     var xhttp = createRequest();
 
     if (bookingRefNo == "") {
-        document.getElementById("txtHint").innerHTML = "";
+        document.getElementById("tableID").innerHTML = "";
         return;
     }
 
