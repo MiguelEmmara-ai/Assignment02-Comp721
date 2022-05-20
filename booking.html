@@ -224,7 +224,8 @@
 
         document.getElementById('pickUpDate').value = new Date().toDateInputValue();
 
-        pickUpTime.valueAsDate = new Date()
+        var today = new Date();
+        document.getElementById("pickUpTime").value = today.getHours() + ":" + today.getMinutes();
     </script>
 
 </body>
