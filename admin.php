@@ -52,7 +52,7 @@ if (isset($_POST['booking-brn-number'])) {
                         <div class="col-md-4 text-start">
                             <p class="text-primary m-0 fw-bold">All Bookings</p>
                         </div>
-                        <div class="col-md-3 py-2 text-end">
+                        <div class="col-md-2 py-2 text-end">
                             <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                                 <div class="row g-3 align-items-center">
                                     <div class="col-auto">
