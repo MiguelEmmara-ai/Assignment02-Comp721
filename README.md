@@ -17,6 +17,8 @@ server, as learned in Assignment One and the first part of this course.
 2. Become A Driver  - This page is for drivers to create their new account
 3. Login            - Login drivers, check if the drivers is on the system
 
+# Documentation
+Full documentation can be found over on [docscabs.miguelemmara.me](https://docscabs.miguelemmara.me/).
 # Screenshots
 ![Screenshot 1](https://github.com/MiguelEmmara-ai/Assignment02-Comp721/blob/release/v1.0/screenshots/screencapture-localhost-assignment02-release-v1.png)
 
