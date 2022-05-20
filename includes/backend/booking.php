@@ -46,7 +46,6 @@ $fName_err
     = $destinationSuburb_err = "";
 
 // Include config file
-// require_once("dbconf/settings.php");
 require_once(dirname(__FILE__) . "/settings.php");
 
 date_default_timezone_set('Pacific/Auckland');

@@ -51,7 +51,7 @@ function addBooking() {
         if (validated) {
 
             // encodeURIComponent(bookingDate)
-            var url = "includes/bookingProcess.php";
+            var url = "includes/booking.php";
             var params = "customerName=" + customerName +
                 "&bookingDate=" + encodeURIComponent(bookingDate) +
                 "&bookingTime=" + encodeURIComponent(bookingTime) +

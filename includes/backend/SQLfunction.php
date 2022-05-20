@@ -6,8 +6,9 @@ if (!defined('MY_CONSTANT')) {
 }
 
 /**
- * check for unique reference number in database.
- * using the input '$referenceNumber' as key and search across database.
+ * Check for unique reference number in database.
+ * using the input '$referenceNumber'
+ * as key and search across database.
  */
 function uniqueRefCheck($conn, $sql_table, $referenceNumber)
 {
@@ -16,7 +17,7 @@ function uniqueRefCheck($conn, $sql_table, $referenceNumber)
 }
 
 /**
- * create Table Passengers If NotExist
+ * Create Table Passengers If NotExist
  *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
@@ -58,7 +59,7 @@ function createTablePassengersIfNotExist()
 }
 
 /**
- * create Table Drivers If NotExist
+ * Create Table Drivers If NotExist
  *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
@@ -311,7 +312,7 @@ VALUES
 }
 
 /**
- * loginDrivers
+ * Login Drivers
  *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
@@ -398,7 +399,7 @@ function loginDrivers()
 }
 
 /**
- * registerDrivers
+ * Register Drivers
  *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
@@ -530,9 +531,13 @@ function registerDrivers()
 }
 
 /**
- * assignBookingManual
+ * Assign Booking Manual
+ *
+ * This Method used for assigning booking manual through user input
+ * passing the bookingRefNo
  *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
+ * @param      $bookingRefNo
  */
 function assignBookingManual($bookingRefNo)
 {
