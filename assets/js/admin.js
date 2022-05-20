@@ -44,14 +44,13 @@ function showAvailPassengers() {
 }
 
 /**
- * This function shows all available (Unassigned) Passengers by passing information to the server
+ * This function search specific passengers based on their bookingRefNo
  * @send XML object
  */
 function searchPassengers(bookingRefNo) {
     var xhttp = createRequest();
 
     if (bookingRefNo == "") {
-        // document.getElementById("tableID").innerHTML = "";
         Swal.fire(
             'Missing Something?',
             'You Forgotten To Put The Booking Number<br><br>Want to know the recent books?<br>Click On The "Show Recent Bookings"',
