@@ -11,12 +11,61 @@
 <html>
 
 <?php
+
+/*
+|--------------------------------------------------------------------------
+| Access Restriction
+|--------------------------------------------------------------------------
+|
+| Here is the declaration that user or visitor
+| can access the page
+| all the define('MY_CONSTANT', 1) meaning pages that can be access.
+|
+ */
+
 define('MY_CONSTANT', 1);
+
+/*
+|--------------------------------------------------------------------------
+| Title Variable
+|--------------------------------------------------------------------------
+|
+| Title variable used to
+| make dynamic title depending
+| on the page where user are on.
+|
+ */
+
 $title = "About Cabs Online";
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/header
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/header
+| for displaying the header
+|
+ */
 require dirname(__FILE__) . "/includes/frontend/header.php";?>
 
 <body>
-    <?php require 'includes/frontend/nav.php';?>
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/nav
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/nav
+| for displaying the navbar
+|
+ */
+
+require 'includes/frontend/nav.php';
+?>
     <!-- Start: Highlight Phone -->
     <section class="highlight-phone" style="background: rgb(254,251,240);height: 653px;padding-top: 113px;">
         <div class="container">
@@ -54,7 +103,22 @@ require dirname(__FILE__) . "/includes/frontend/header.php";?>
         </div>
     </section>
 
-    <?php require 'includes/frontend/footer.php';?>
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/footer
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/footer
+| for displaying the footer
+|
+ */
+
+require 'includes/frontend/footer.php';
+
+?>
 </body>
 
 </html>
