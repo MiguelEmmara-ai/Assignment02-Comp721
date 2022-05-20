@@ -1,9 +1,9 @@
-a button to display list of bookings with a pickup time within 2 hours from the current time (recent bookings) (Unassigned)
-create mysql fucntion to display recent bookings (Unassigned)
-add search button next to assign btn on admin, next to booking number input
-add "Congratulations! Booking request BRN00001 has been assigned!" after assign for html
-display current date and time on html
-add more thorough comments
+A button to display list of bookings with a pickup time within 2 hours from the current time (recent bookings) (Unassigned)
+Create mysql function to display recent bookings (Unassigned)
+Add search button next to assign btn on admin, next to booking number input
+Display current date and time on booking.html
+Add more thorough comments
+
 check marking scheme
     2.1.1 ✅
     2.1.2 
@@ -27,6 +27,5 @@ check marking scheme
         4 ✅
         5 ✅
         6 TODO check
-    Overal Quality ✅✅✅✅✅✅✅✅✅✅✅✅
 
-Create 2 version for html and full PHP    
+    Overall Quality ✅✅✅✅✅✅✅✅✅✅✅✅
