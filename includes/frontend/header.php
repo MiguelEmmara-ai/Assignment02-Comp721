@@ -1,7 +1,7 @@
 <?php
 
 // Since this header file is everywhere,
-// we can check if includes/dbconf/settings.php is not
+// we can check if includes/dbconf/settings.php is not exist
 // if true then we go through the script installation
 if (!file_exists('includes/dbconf/settings.php')) {
     header('location:install.php');
