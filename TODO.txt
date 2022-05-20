@@ -1,18 +1,18 @@
-Display current date and time on booking.html
+Display current time on booking.html
 Add more thorough comments
 
 check marking scheme
     2.1.1 ✅
     2.1.2 
         1 ✅
-        2 TODO
+        2 TODO booking.html
         3 ✅
         4 ✅
     2.1.3
         1 ✅
         2 ✅
     2.1.4
-        1 ✅might change later
+        1 ✅
         2 ✅
     2.2
         1 ✅
