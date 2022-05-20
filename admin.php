@@ -40,7 +40,7 @@ if (isset($_POST['booking-brn-number'])) {
                         <i class="fa fa-plus"></i>&nbsp;Show All Bookings </a>
                         <a class="btn btn-primary mx-1 mb-2" role="button" onclick="showRecent()">
                         <i class="fa fa-plus"></i>&nbsp;Show Recent Bookings </a>
-                    <a class="btn btn-primary mx-1 mb-2" role="button" onclick="shoAvailPassengers()">
+                    <a class="btn btn-primary mx-1 mb-2" role="button" onclick="showAvailPassengers()">
                         <i class="fa fa-plus"></i>&nbsp;Show All Available Bookings </a>
                     <a href="logout.php" class="btn btn-primary mb-2">Sign Out</a>
                 </div>
