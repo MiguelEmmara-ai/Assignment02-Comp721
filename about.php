@@ -13,10 +13,10 @@
 <?php
 define('MY_CONSTANT', 1);
 $title = "About Cabs Online";
-include dirname(__FILE__)."/includes/frontend/header.php"; ?>
+require dirname(__FILE__) . "/includes/frontend/header.php";?>
 
 <body>
-    <?php include('includes/frontend/nav.php'); ?>
+    <?php require 'includes/frontend/nav.php';?>
     <!-- Start: Highlight Phone -->
     <section class="highlight-phone" style="background: rgb(254,251,240);height: 653px;padding-top: 113px;">
         <div class="container">
@@ -46,15 +46,15 @@ include dirname(__FILE__)."/includes/frontend/header.php"; ?>
         <h3 id="seen" class="text-center">As Seen On</h3>
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-md-3"><a href="#"><img class="img-fluid d-block mx-auto" src="assets/img/clients/google.jpg"></a></div>
-                <div class="col-sm-6 col-md-3"><a href="#"><img class="img-fluid d-block mx-auto" src="assets/img/clients/facebook.jpg"></a></div>
-                <div class="col-sm-6 col-md-3"><a href="#"><img class="img-fluid d-block mx-auto" src="assets/img/clients/airbnb.jpg"></a></div>
-                <div class="col-sm-6 col-md-3"><a href="#"><img class="img-fluid d-block mx-auto" src="assets/img/clients/netflix.jpg"></a></div>
+                <div class="col-sm-6 col-md-3"><a href="https://www.google.com/" target="_blank"><img class="img-fluid d-block mx-auto" src="assets/img/clients/google.jpg"></a></div>
+                <div class="col-sm-6 col-md-3"><a href="https://www.facebook.com/" target="_blank"><img class="img-fluid d-block mx-auto" src="assets/img/clients/facebook.jpg"></a></div>
+                <div class="col-sm-6 col-md-3"><a href="https://www.airbnb.co.nz/" target="_blank"><img class="img-fluid d-block mx-auto" src="assets/img/clients/airbnb.jpg"></a></div>
+                <div class="col-sm-6 col-md-3"><a href="https://www.netflix.com/" target="_blank"><img class="img-fluid d-block mx-auto" src="assets/img/clients/netflix.jpg"></a></div>
             </div>
         </div>
     </section>
 
-    <?php include('includes/frontend/footer.php'); ?>
+    <?php require 'includes/frontend/footer.php';?>
 </body>
 
 </html>
