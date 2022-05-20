@@ -1,11 +1,10 @@
-Display current time on booking.html
 Add more thorough comments
 
 check marking scheme
     2.1.1 ✅
     2.1.2 
         1 ✅
-        2 TODO booking.html
+        2 TODO implement book btn on booking.html
         3 ✅
         4 ✅
     2.1.3
