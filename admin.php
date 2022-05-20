@@ -15,9 +15,9 @@ session_start();
 
 define('MY_CONSTANT', 1);
 $title = "Admin | Cabs Online";
-include dirname(__FILE__)."/includes/frontend/header.php";
-include dirname(__FILE__)."/includes/backend/appFunction.php";
-include dirname(__FILE__)."/includes/backend/SQLfunction.php";
+require dirname(__FILE__) . "/includes/frontend/header.php";
+require dirname(__FILE__) . "/includes/backend/appFunction.php";
+require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
 
 checkUserLoggedIn();
 
@@ -27,7 +27,7 @@ if (isset($_POST['booking-brn-number'])) {
 ?>
 
 <body>
-    <?php include "includes/frontend/nav.php"; ?>
+    <?php require "includes/frontend/nav.php";?>
     <section>
         <!-- Start: Ludens - 1 Index Table with Search & Sort Filters  -->
         <div class="container-fluid">
@@ -38,6 +38,8 @@ if (isset($_POST['booking-brn-number'])) {
                 <div class="col-12 col-sm-6 col-md-6 text-end" style="margin-bottom: 30px;">
                     <a class="btn btn-primary mx-1 mb-2" role="button" onclick="showall()">
                         <i class="fa fa-plus"></i>&nbsp;Show All Bookings </a>
+                        <a class="btn btn-primary mx-1 mb-2" role="button" onclick="showRecent()">
+                        <i class="fa fa-plus"></i>&nbsp;Show Recent Bookings </a>
                     <a class="btn btn-primary mx-1 mb-2" role="button" onclick="shoAvailPassengers()">
                         <i class="fa fa-plus"></i>&nbsp;Show All Available Bookings </a>
                     <a href="logout.php" class="btn btn-primary mb-2">Sign Out</a>
@@ -64,21 +66,12 @@ if (isset($_POST['booking-brn-number'])) {
                                 </div>
                             </form>
                         </div>
-                        <!-- <div class="col-12 col-sm-7 col-md-6 text-end" style="margin: 0px;padding: 5px 15px;">
-                            <button class="btn btn-warning btn-sm" id="zoom_in" type="button" zoomclick="ChangeZoomLevel(-10);" style="margin: 2px;">
-                                <i class="fa fa-search-plus"></i>
-                            </button>
-                            <button class="btn btn-warning btn-sm" id="zoom_out" type="button" zoomclick="ChangeZoomLevel(-10);" style="margin: 2px;">
-                                <i class="fa fa-search-minus"></i>
-                            </button>
-                            <a href="logout.php" class="btn btn-primary btn-sm">Sign Out</a>
-                        </div> -->
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="table-responsive">
-                            <div id="txtHint">
+                            <div id="tableID">
                                 <b class="text-warning">Bookings info will be listed here.</b>
                             </div>
                         </div>
@@ -90,7 +83,7 @@ if (isset($_POST['booking-brn-number'])) {
         <!-- End: Ludens - 1 Index Table with Search & Sort Filters  -->
     </section>
 
-    <?php include('includes/frontend/footer.php'); ?>
+    <?php require 'includes/frontend/footer.php';?>
 </body>
 
 </html>
