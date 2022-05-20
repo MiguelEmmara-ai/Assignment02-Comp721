@@ -23,9 +23,6 @@ check marking scheme
         3 ✅
         4 ✅
         5 ✅
-        6 TODO check When there is an empty input:
-                    • A list of bookings with pickup times within
-                        2 hours from the current time is displayed
-                        on the page. (6)
+        6 ✅
 
     Overall Quality ✅✅✅✅✅✅✅✅✅✅✅✅
