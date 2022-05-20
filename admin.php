@@ -21,8 +21,8 @@ require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
 
 checkUserLoggedIn();
 
-if (isset($_POST['booking-brn-number'])) {
-    assignBookingManual($_POST['booking-brn-number']);
+if (isset($_POST['booking'])) {
+    assignBookingManual($_POST['booking']);
 }
 ?>
 
@@ -56,17 +56,16 @@ if (isset($_POST['booking-brn-number'])) {
                             <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                                 <div class="row g-3 align-items-center">
                                     <div class="col-auto">
-                                        <input class="form-control mb-2" type="text" name="booking-brn-number" placeholder="Booking Number">
+                                        <input class="form-control mb-2" type="text" name="booking" id="booking" placeholder="Booking Number">
                                     </div>
-                                    
+
                                     <div class="col-auto">
                                         <button class="btn btn-primary flex-fill py-2 mb-2" type="submit">
                                             <i class="far fa-paper-plane"></i> ASSIGN
                                         </button>
 
-                                        <button class="btn btn-primary flex-fill py-2 mb-2" name="sbutton" id="sbutton" type="submit">
-                                        <i class="fas fa-search"></i></i> Search
-                                        </button>
+                                        <a class="btn btn-primary mx-1 mb-2" role="button" name="sbutton" id="sbutton" onclick="searchPassengers(booking.value)">
+                                        <i class="fas fa-search"></i></i> Search </a>
                                     </div>
                                 </div>
                             </form>

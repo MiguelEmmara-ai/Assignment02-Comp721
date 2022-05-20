@@ -540,7 +540,7 @@ function assignBookingManual($bookingRefNo)
     require "includes/dbconf/settings.php";
 
     // Check if bookingRefNo input by user in the text box
-    if (isset($_POST["booking-brn-number"]) && !empty($_POST["booking-brn-number"])) {
+    if (isset($_POST["booking"]) && !empty($_POST["booking"])) {
         $driver_name = $_SESSION["username"];
         $update = "UPDATE passengers SET status = 'Assigned',  assignedBy = '" . $driver_name . "' WHERE bookingRefNo = '" . $bookingRefNo . "'";
 
