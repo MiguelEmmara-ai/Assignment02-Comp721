@@ -17,28 +17,28 @@ define('MY_CONSTANT', 1);
 // Initialize the session
 session_start();
 $title = "Login Drivers | Cabs Online";
-include dirname(__FILE__)."/includes/frontend/header.php";
-include dirname(__FILE__)."/includes/backend/appFunction.php";
-include dirname(__FILE__)."/includes/backend/SQLfunction.php";
+require dirname(__FILE__) . "/includes/frontend/header.php";
+require dirname(__FILE__) . "/includes/backend/appFunction.php";
+require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
 
 checkUserLoggedInRedirect();
 ?>
 
 <body>
-    <?php include('includes/frontend/nav.php'); ?>
+    <?php require 'includes/frontend/nav.php';?>
 
     <!-- Start: Login Form Clean -->
     <section class="login-clean" style="padding-top: 180px;">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <?php
-            // Define variables and initialize with empty values
-            $username = $password = "";
-            $username_err = $password_err = $login_err = "";
+// Define variables and initialize with empty values
+$username = $password = "";
+$username_err = $password_err = $login_err = "";
 
-            if (!empty($login_err)) {
-                echo '<div class="alert alert-danger text-center">' . $login_err . '</div>';
-            }
-            ?>
+if (!empty($login_err)) {
+    echo '<div class="alert alert-danger text-center">' . $login_err . '</div>';
+}
+?>
             <div class="illustration">
                 <h1 style="font-size: 30px;color: rgb(197,173,50);">Admin Login</h1><i class="la la-taxi" style="color: rgb(254,209,54);"></i>
             </div>
@@ -58,7 +58,7 @@ checkUserLoggedInRedirect();
     </section>
     <!-- End: Login Form Clean -->
 
-    <?php include('includes/frontend/footer.php'); ?>
+    <?php require 'includes/frontend/footer.php';?>
 </body>
 
 </html>

@@ -13,10 +13,10 @@
 <?php
 define('MY_CONSTANT', 1);
 $title = "Cabs Online | Book A Taxi Ride With Us Today!";
-include dirname(__FILE__)."/includes/frontend/header.php"; ?>
+require dirname(__FILE__) . "/includes/frontend/header.php";?>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
-    <?php include('includes/frontend/nav.php'); ?>
+    <?php require 'includes/frontend/nav.php';?>
     <!-- Start: Header Blue -->
     <header class="header-blue">
         <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
@@ -244,7 +244,7 @@ include dirname(__FILE__)."/includes/frontend/header.php"; ?>
         </div>
     </section>
 
-    <?php include('includes/frontend/footer.php'); ?>
+    <?php require 'includes/frontend/footer.php';?>
 </body>
 
 </html>

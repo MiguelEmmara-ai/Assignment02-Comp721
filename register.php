@@ -14,9 +14,9 @@
 
 define('MY_CONSTANT', 1);
 $title = "Register Driver | Cabs Online";
-include dirname(__FILE__)."/includes/frontend/header.php";
-include dirname(__FILE__)."/includes/backend/appFunction.php";
-include dirname(__FILE__)."/includes/backend/SQLfunction.php";
+require dirname(__FILE__) . "/includes/frontend/header.php";
+require dirname(__FILE__) . "/includes/backend/appFunction.php";
+require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
 
 createTableIfDriversNotExist();
 
@@ -31,7 +31,7 @@ if (isset($_POST['signUp-button'])) {
 ?>
 
 <body>
-    <?php include('includes/frontend/nav.php'); ?>
+    <?php require 'includes/frontend/nav.php';?>
     <!-- Start: Registration Form with Photo -->
     <section class="register-photo" style="margin-top: 60px;">
         <!-- Start: Form Container -->
@@ -109,7 +109,7 @@ if (isset($_POST['signUp-button'])) {
     </section>
     <!-- End: Registration Form with Photo -->
 
-    <?php include('includes/frontend/footer.php'); ?>
+    <?php require 'includes/frontend/footer.php';?>
 </body>
 
 </html>

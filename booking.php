@@ -17,14 +17,14 @@ define('MY_CONSTANT', 1);
 // Set Time Zone To New Zealand
 date_default_timezone_set('Pacific/Auckland');
 $title = "Book A Ride | Cabs Online";
-include dirname(__FILE__)."/includes/frontend/header.php";
-include dirname(__FILE__)."/includes/backend/appFunction.php";
-include dirname(__FILE__)."/includes/backend/SQLfunction.php";
+require dirname(__FILE__) . "/includes/frontend/header.php";
+require dirname(__FILE__) . "/includes/backend/appFunction.php";
+require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
 
 createTablePassengersIfNotExist();
 
 // Define variables and initialize with empty values
-$fName = $lName = $phoneNumber = $unitNumber = $streetNumber = $streetName = $suburb = $destinationSuburb = $cars =  "";
+$fName = $lName = $phoneNumber = $unitNumber = $streetNumber = $streetName = $suburb = $destinationSuburb = $cars = "";
 $fName_err = $lName_err = $phoneNumber_err = $unitNumber_err = $streetNumber_err = $streetName_err = $suburb_err = $destinationSuburb_err = "";
 
 if (isset($_POST['book-button'])) {
@@ -34,7 +34,7 @@ if (isset($_POST['book-button'])) {
 ?>
 
 <body>
-    <?php include('includes/frontend/nav.php'); ?>
+    <?php require 'includes/frontend/nav.php';?>
     <!-- Start: Contact Form Clean -->
     <section class="contact-clean">
         <div class="container">
@@ -119,15 +119,15 @@ if (isset($_POST['book-button'])) {
 
                         <div class="mb-3">
                             <?php
-                            $date = date("Y-m-d");
-                            ?>
+$date = date("Y-m-d");
+?>
                             <p><strong>Pick-Up Date</strong><br></p>
                             <input class="form-control form-control-lg" type="date" id="pickUpDate" name="pickUpDate" required="" value=<?php echo $date; ?>>
                         </div>
                         <div class="mb-3">
                             <?php
-                            $dateTime = new DateTime('now', new DateTimeZone('Pacific/Auckland'));
-                            ?>
+$dateTime = new DateTime('now', new DateTimeZone('Pacific/Auckland'));
+?>
                             <p><strong>Pick-Up Time</strong><br></p>
                             <input class="form-control form-control-lg" type="time" id="pickUpTime" name="pickUpTime" required="" value=<?php echo $dateTime->format("H:i A"); ?>>
                         </div>
@@ -153,7 +153,7 @@ if (isset($_POST['book-button'])) {
     </section>
     <!-- End: Contact Form Clean -->
 
-    <?php include('includes/frontend/footer.php'); ?>
+    <?php require 'includes/frontend/footer.php';?>
 </body>
 
 </html>
