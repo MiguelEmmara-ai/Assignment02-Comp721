@@ -14,7 +14,7 @@ if (isset($_GET["q"]) && !empty($_GET["q"])) {
     $update = "UPDATE passengers SET status = 'Assigned',  assignedBy = '" . $driver_name . "' WHERE bookingRefNo = '" . $bookingRefNo . "'";
 
     if ($conn->query($update) === true) {
-        echo "Congratulations! Booking request '" . $bookingRefNo . "' has been assigned! For '" . $driver_name . "'";
+        echo "Booking request '" . $bookingRefNo . "' has been assigned! For '" . $driver_name . "'";
     } else {
         echo "Error updating record: " . mysqli_error($conn);
     }
