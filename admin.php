@@ -10,24 +10,136 @@
 <html>
 
 <?php
-// Initialize the session
+
+/*
+|--------------------------------------------------------------------------
+| Initialize the session
+|--------------------------------------------------------------------------
+|
+| creates a session or resumes the current one
+| based on a session identifier passed via
+| a GET or POST request, or passed via a cookie.
+|
+ */
+
 session_start();
 
+/*
+|--------------------------------------------------------------------------
+| Access Restriction
+|--------------------------------------------------------------------------
+|
+| Here is the declaration that user or visitor
+| can access the page
+| all the define('MY_CONSTANT', 1) meaning pages that can be access.
+|
+ */
+
 define('MY_CONSTANT', 1);
+
+/*
+|--------------------------------------------------------------------------
+| Title Variable
+|--------------------------------------------------------------------------
+|
+| Title variable used to
+| make dynamic title depending
+| on the page where user are on.
+|
+ */
+
 $title = "Admin | Cabs Online";
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/header
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/header
+| for displaying the header
+|
+ */
+
 require dirname(__FILE__) . "/includes/frontend/header.php";
+
+/*
+|--------------------------------------------------------------------------
+| Require backend/appFunction
+|--------------------------------------------------------------------------
+|
+| include file
+| backend/appFunction
+| We'll require it so we can access the methods inside
+|
+ */
+
 require dirname(__FILE__) . "/includes/backend/appFunction.php";
+
+/*
+|--------------------------------------------------------------------------
+| Require backend/SQLfunction
+|--------------------------------------------------------------------------
+|
+| include file
+| backend/SQLfunction
+| We'll require it so we can access the methods inside
+|
+ */
+
 require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
+
+/*
+|--------------------------------------------------------------------------
+| checkUserLoggedIn()
+|--------------------------------------------------------------------------
+|
+| Check If User LoggedIn,
+| if not then redirect
+| the user to the login page
+|
+ */
 
 checkUserLoggedIn();
 
+// When The Assign OR Search is clicked,
+// we take the variable booking and check
+// if whether or not it is empty before we pass it to the method
 if (isset($_POST['booking'])) {
+
+    /*
+    |--------------------------------------------------------------------------
+    | assignBookingManual($bookingRefNo)
+    |--------------------------------------------------------------------------
+    |
+    | Assign the booking
+    | according to the bookingRefNo
+    | and update the data
+    |
+     */
+
     assignBookingManual($_POST['booking']);
 }
+
 ?>
 
 <body>
-    <?php require "includes/frontend/nav.php";?>
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/nav
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/nav
+| for displaying the navbar
+|
+ */
+
+require "includes/frontend/nav.php";
+
+?>
     <section>
         <!-- Start: Ludens - 1 Index Table with Search & Sort Filters  -->
         <div class="container-fluid">
@@ -87,7 +199,22 @@ if (isset($_POST['booking'])) {
         <!-- End: Ludens - 1 Index Table with Search & Sort Filters  -->
     </section>
 
-    <?php require 'includes/frontend/footer.php';?>
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/footer
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/footer
+| for displaying the footer
+|
+ */
+
+require 'includes/frontend/footer.php';
+
+?>
 </body>
 
 </html>

@@ -12,26 +12,135 @@
 
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| Access Restriction
+|--------------------------------------------------------------------------
+|
+| Here is the declaration that user or visitor
+| can access the page
+| all the define('MY_CONSTANT', 1) meaning pages that can be access.
+|
+ */
+
 define('MY_CONSTANT', 1);
+
+/*
+|--------------------------------------------------------------------------
+| Title Variable
+|--------------------------------------------------------------------------
+|
+| Title variable used to
+| make dynamic title depending
+| on the page where user are on.
+|
+ */
+
 $title = "Register Driver | Cabs Online";
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/header
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/header
+| for displaying the header
+|
+ */
+
 require dirname(__FILE__) . "/includes/frontend/header.php";
+
+/*
+|--------------------------------------------------------------------------
+| Require backend/appFunction
+|--------------------------------------------------------------------------
+|
+| include file
+| backend/appFunction
+| We'll require it so we can access the methods inside
+|
+ */
+
 require dirname(__FILE__) . "/includes/backend/appFunction.php";
+
+/*
+|--------------------------------------------------------------------------
+| Require backend/SQLfunction
+|--------------------------------------------------------------------------
+|
+| include file
+| backend/SQLfunction
+| We'll require it so we can access the methods inside
+|
+ */
+
 require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
 
+/*
+|--------------------------------------------------------------------------
+| createTableIfDriversNotExist()
+|--------------------------------------------------------------------------
+|
+| This Function Will
+| create Table Drivers
+| If NotExist
+|
+ */
 createTableIfDriversNotExist();
 
-// Define variables and initialize with empty values
+/*
+|--------------------------------------------------------------------------
+| Define variables and initialize with empty values
+|--------------------------------------------------------------------------
+|
+| Define variables and initialize
+| with empty values
+| this will use for the form initial values
+|
+ */
+
 $email = $username = $password = $confirm_password = "";
 $email_err = $username_err = $password_err = $confirm_password_err = "";
 
+// When The signUp-button is clicked,
+// we take the all input values
+// and register the driver
 if (isset($_POST['signUp-button'])) {
+
+    /*
+    |--------------------------------------------------------------------------
+    | registerDrivers()
+    |--------------------------------------------------------------------------
+    |
+    | This Function Will
+    | Register Driver
+    | Booking To The Database
+    |
+     */
+
     registerDrivers();
 }
 
 ?>
 
 <body>
-    <?php require 'includes/frontend/nav.php';?>
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/nav
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/nav
+| for displaying the navbar
+|
+ */
+
+require "includes/frontend/nav.php";
+
+?>
     <!-- Start: Registration Form with Photo -->
     <section class="register-photo" style="margin-top: 60px;">
         <!-- Start: Form Container -->
@@ -109,7 +218,22 @@ if (isset($_POST['signUp-button'])) {
     </section>
     <!-- End: Registration Form with Photo -->
 
-    <?php require 'includes/frontend/footer.php';?>
+    <?php
+
+    /*
+    |--------------------------------------------------------------------------
+    | Require frontend/footer
+    |--------------------------------------------------------------------------
+    |
+    | include file
+    | frontend/footer
+    | for displaying the footer
+    |
+    */
+
+    require 'includes/frontend/footer.php';
+
+    ?>
 </body>
 
 </html>

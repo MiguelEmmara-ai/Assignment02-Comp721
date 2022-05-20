@@ -12,29 +12,149 @@
 
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| Access Restriction
+|--------------------------------------------------------------------------
+|
+| Here is the declaration that user or visitor
+| can access the page
+| all the define('MY_CONSTANT', 1) meaning pages that can be access.
+|
+ */
+
 define('MY_CONSTANT', 1);
 
-// Set Time Zone To New Zealand
+/*
+|--------------------------------------------------------------------------
+| Set Time Zone To New Zealand
+|--------------------------------------------------------------------------
+|
+| Here we set default
+| timezone for the server side to be in
+| New Zealand.
+|
+ */
+
 date_default_timezone_set('Pacific/Auckland');
+
+/*
+|--------------------------------------------------------------------------
+| Title Variable
+|--------------------------------------------------------------------------
+|
+| Title variable used to
+| make dynamic title depending
+| on the page where user are on.
+|
+ */
+
 $title = "Book A Ride | Cabs Online";
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/header
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/header
+| for displaying the header
+|
+ */
+
 require dirname(__FILE__) . "/includes/frontend/header.php";
+
+/*
+|--------------------------------------------------------------------------
+| Require backend/appFunction
+|--------------------------------------------------------------------------
+|
+| include file
+| backend/appFunction
+| We'll require it so we can access the methods inside
+|
+ */
+
 require dirname(__FILE__) . "/includes/backend/appFunction.php";
+
+/*
+|--------------------------------------------------------------------------
+| Require backend/SQLfunction
+|--------------------------------------------------------------------------
+|
+| include file
+| backend/SQLfunction
+| We'll require it so we can access the methods inside
+|
+ */
+
 require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
+
+/*
+|--------------------------------------------------------------------------
+| createTablePassengersIfNotExist()
+|--------------------------------------------------------------------------
+|
+| This Function Will
+| create Table Passengers 
+| If NotExist
+|
+ */
 
 createTablePassengersIfNotExist();
 
-// Define variables and initialize with empty values
+/*
+|--------------------------------------------------------------------------
+| Define variables and initialize with empty values
+|--------------------------------------------------------------------------
+|
+| Define variables and initialize
+| with empty values
+| this will use for the form initial values
+|
+ */
+
 $fName = $lName = $phoneNumber = $unitNumber = $streetNumber = $streetName = $suburb = $destinationSuburb = $cars = "";
 $fName_err = $lName_err = $phoneNumber_err = $unitNumber_err = $streetNumber_err = $streetName_err = $suburb_err = $destinationSuburb_err = "";
 
+// When The Assign OR Search is clicked,
+// we take the variable booking and check
+// if whether or not it is empty before we pass it to the method
 if (isset($_POST['book-button'])) {
+
+    /*
+    |--------------------------------------------------------------------------
+    | addPassengers()
+    |--------------------------------------------------------------------------
+    |
+    | This Function Will
+    | Add Passengers
+    | Booking To The Database
+    |
+     */
+
     addPassengers();
 }
 
 ?>
 
 <body>
-    <?php require 'includes/frontend/nav.php';?>
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/nav
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/nav
+| for displaying the navbar
+|
+ */
+
+require "includes/frontend/nav.php";
+
+?>
     <!-- Start: Contact Form Clean -->
     <section class="contact-clean">
         <div class="container">
@@ -119,15 +239,17 @@ if (isset($_POST['book-button'])) {
 
                         <div class="mb-3">
                             <?php
-$date = date("Y-m-d");
-?>
+                            $date = date("Y-m-d");
+                            ?>
+
                             <p><strong>Pick-Up Date</strong><br></p>
                             <input class="form-control form-control-lg" type="date" id="pickUpDate" name="pickUpDate" required="" value=<?php echo $date; ?>>
                         </div>
                         <div class="mb-3">
                             <?php
-$dateTime = new DateTime('now', new DateTimeZone('Pacific/Auckland'));
-?>
+                            $dateTime = new DateTime('now', new DateTimeZone('Pacific/Auckland'));
+                            ?>
+
                             <p><strong>Pick-Up Time</strong><br></p>
                             <input class="form-control form-control-lg" type="time" id="pickUpTime" name="pickUpTime" required="" value=<?php echo $dateTime->format("H:i A"); ?>>
                         </div>
@@ -153,7 +275,22 @@ $dateTime = new DateTime('now', new DateTimeZone('Pacific/Auckland'));
     </section>
     <!-- End: Contact Form Clean -->
 
-    <?php require 'includes/frontend/footer.php';?>
+    <?php
+
+    /*
+    |--------------------------------------------------------------------------
+    | Require frontend/footer
+    |--------------------------------------------------------------------------
+    |
+    | include file
+    | frontend/footer
+    | for displaying the footer
+    |
+    */
+
+    require 'includes/frontend/footer.php';
+
+    ?>
 </body>
 
 </html>

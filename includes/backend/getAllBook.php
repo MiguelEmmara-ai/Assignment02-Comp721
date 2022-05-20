@@ -1,11 +1,46 @@
 <?php
+
+/*
+|--------------------------------------------------------------------------
+| Access Restriction
+|--------------------------------------------------------------------------
+|
+| Here is the declaration that user or visitor
+| can access the page
+| all the define('MY_CONSTANT', 1) meaning pages that can be access.
+|
+ */
+
 define('MY_CONSTANT', 1);
 
-// Include config file
-include(dirname(__FILE__) . "/../dbconf/settings.php");
+/*
+|--------------------------------------------------------------------------
+| Require dbconf/settings.php
+|--------------------------------------------------------------------------
+|
+| include file
+| dbconf/settings.php
+| for connect to database
+|
+ */
+
+require dirname(__FILE__) . "/../dbconf/settings.php";
+
+/*
+|--------------------------------------------------------------------------
+| Select Database
+|--------------------------------------------------------------------------
+|
+| make query to select
+| * FROM passengers
+| then display it onto the table
+|
+ */
 
 mysqli_select_db($conn, $dbnm);
+
 $query = "SELECT * FROM passengers";
+
 $result = mysqli_query($conn, $query);
 ?>
 

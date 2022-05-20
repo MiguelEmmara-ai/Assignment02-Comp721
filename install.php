@@ -30,6 +30,7 @@ if (isset($_POST['submit'])) {
         $msg = mysqli_connect_error();
     } else {
         copy("includes/dbconf/settings.inc.config.php", "includes/dbconf/settings.php");
+        copy("includes/dbconf/settings.inc.config.php", "includes/backend/settings.php");
         $file = "includes/dbconf/settings.php";
         file_put_contents($file, str_replace("db_host", $host, file_get_contents($file)));
         file_put_contents($file, str_replace("db_username", $user, file_get_contents($file)));

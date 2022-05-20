@@ -12,29 +12,137 @@
 
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| Access Restriction
+|--------------------------------------------------------------------------
+|
+| Here is the declaration that user or visitor
+| can access the page
+| all the define('MY_CONSTANT', 1) meaning pages that can be access.
+|
+ */
+
 define('MY_CONSTANT', 1);
 
-// Initialize the session
+/*
+|--------------------------------------------------------------------------
+| Initialize the session
+|--------------------------------------------------------------------------
+|
+| creates a session or resumes the current one
+| based on a session identifier passed via
+| a GET or POST request, or passed via a cookie.
+|
+ */
+
 session_start();
+
+/*
+|--------------------------------------------------------------------------
+| Title Variable
+|--------------------------------------------------------------------------
+|
+| Title variable used to
+| make dynamic title depending
+| on the page where user are on.
+|
+ */
+
 $title = "Login Drivers | Cabs Online";
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/header
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/header
+| for displaying the header
+|
+ */
+
 require dirname(__FILE__) . "/includes/frontend/header.php";
+
+/*
+|--------------------------------------------------------------------------
+| Require backend/appFunction
+|--------------------------------------------------------------------------
+|
+| include file
+| backend/appFunction
+| We'll require it so we can access the methods inside
+|
+ */
+
 require dirname(__FILE__) . "/includes/backend/appFunction.php";
+
+/*
+|--------------------------------------------------------------------------
+| Require backend/SQLfunction
+|--------------------------------------------------------------------------
+|
+| include file
+| backend/SQLfunction
+| We'll require it so we can access the methods inside
+|
+ */
+
 require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
 
+/*
+|--------------------------------------------------------------------------
+| checkUserLoggedInRedirect()
+|--------------------------------------------------------------------------
+|
+| Check if the user is already logged in,
+| if yes then redirect
+| the user to the admin page
+|
+ */
 checkUserLoggedInRedirect();
 ?>
 
 <body>
-    <?php require 'includes/frontend/nav.php';?>
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/nav
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/nav
+| for displaying the navbar
+|
+ */
+
+require "includes/frontend/nav.php";
+
+?>
 
     <!-- Start: Login Form Clean -->
     <section class="login-clean" style="padding-top: 180px;">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <?php
-// Define variables and initialize with empty values
+
+/*
+|--------------------------------------------------------------------------
+| Define variables and initialize with empty values
+|--------------------------------------------------------------------------
+|
+| Define variables and initialize
+| with empty values
+| this will use for the form initial values
+|
+ */
+
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
 
+// When the value of login_err is exist,
+// we display the error message
+// of whatever on the login_err variable is
 if (!empty($login_err)) {
     echo '<div class="alert alert-danger text-center">' . $login_err . '</div>';
 }
@@ -58,7 +166,22 @@ if (!empty($login_err)) {
     </section>
     <!-- End: Login Form Clean -->
 
-    <?php require 'includes/frontend/footer.php';?>
+    <?php
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/footer
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/footer
+| for displaying the footer
+|
+ */
+
+require 'includes/frontend/footer.php';
+
+?>
 </body>
 
 </html>
