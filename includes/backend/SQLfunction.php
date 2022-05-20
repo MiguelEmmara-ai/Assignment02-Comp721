@@ -2,7 +2,7 @@
 if (!defined('MY_CONSTANT')) {
     // You can show a message
     die('Access not allowed!');
-    exit;  // This line is needed to stop script execution
+    exit; // This line is needed to stop script execution
 }
 
 /**
@@ -17,7 +17,7 @@ function uniqueRefCheck($conn, $sql_table, $referenceNumber)
 
 /**
  * create Table Passengers If NotExist
- * 
+ *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function createTablePassengersIfNotExist()
@@ -37,6 +37,7 @@ function createTablePassengersIfNotExist()
         destinationSuburb TEXT,
         pickUpDate DATE NOT NULL,
         pickUpTime TIME NOT NULL,
+        pickUpDateAndTime TIMESTAMP NOT NULL,
         status ENUM('Assigned','Unassigned') NOT NULL,
         carsNeed ENUM('Scooter','Hatchback','Suv','Sedan','Van') NOT NULL,
         assignedBy TEXT NOT NULL
@@ -51,14 +52,14 @@ function createTablePassengersIfNotExist()
         </SCRIPT>");
         // echo "<br>";
     }
-    
+
     // Close connection
     $conn->close();
 }
 
 /**
  * create Table Drivers If NotExist
- * 
+ *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function createTableIfDriversNotExist()
@@ -68,9 +69,9 @@ function createTableIfDriversNotExist()
 
     // Sql to create table If Not Exists
     $sql = "CREATE TABLE IF NOT EXISTS drivers (
-        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
-        email VARCHAR(255) NOT NULL UNIQUE, 
-        username VARCHAR(50) NOT NULL UNIQUE, 
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        email VARCHAR(255) NOT NULL UNIQUE,
+        username VARCHAR(50) NOT NULL UNIQUE,
         password VARCHAR(255) NOT NULL,
         carsAvailability VARCHAR(200) NOT NULL,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -89,7 +90,7 @@ function createTableIfDriversNotExist()
 
 /**
  * Add Passengers Booking To The Database
- * 
+ *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function addPassengers()
@@ -106,6 +107,7 @@ function addPassengers()
     global $destinationSuburb;
     global $pickUpDate;
     global $pickUpTime;
+    global $pickUpDateAndTime;
 
     global $fName_err;
     global $lName_err;
@@ -117,23 +119,23 @@ function addPassengers()
     global $destinationSuburb_err;
 
     $fName
-        = $lName
-        = $unitNumber
-        = $phoneNumber
-        = $streetNumber
-        = $streetName
-        = $suburb
-        = $destinationSuburb
-        = $cars = "";
+    = $lName
+    = $unitNumber
+    = $phoneNumber
+    = $streetNumber
+    = $streetName
+    = $suburb
+    = $destinationSuburb
+    = $cars = "";
 
     $fName_err
-        = $lName_err
-        = $phoneNumber_err
-        = $unitNumber_err
-        = $streetNumber_err
-        = $streetName_err
-        = $suburb_err
-        = $destinationSuburb_err = "";
+    = $lName_err
+    = $phoneNumber_err
+    = $unitNumber_err
+    = $streetNumber_err
+    = $streetName_err
+    = $suburb_err
+    = $destinationSuburb_err = "";
 
     // Include config file
     require "includes/dbconf/settings.php";
@@ -233,9 +235,12 @@ function addPassengers()
             $pickUpDate = date('Y-m-d', strtotime($pickUpDate));
             $pickUpTime = date('H:i:s', strtotime($pickUpTime));
 
-            // Date Validation 
+            // Date Validation
             $date1 = $pickUpDate;
             $date2 = date("Y-m-d");
+
+            // Concate Date And Time
+            $pickUpDateAndTime = $pickUpDate + $pickUpTime;
 
             // If the date is the SAME as today, NEED to check for PICK-UP TIME
             if ($date1 == $date2) {
@@ -249,14 +254,14 @@ function addPassengers()
         bookingRefNo, customerName, phoneNumber,
         unitNumber, streetNumber, streetName,
         suburb, destinationSuburb, pickUpDate,
-        pickUpTime, status, carsNeed, assignedBy
+        pickUpTime, pickUpDateAndTime, status, carsNeed, assignedBy
     )
     VALUES
         (
             '$referenceNumber', '$customerName',
             '$phoneNumber', '$unitNumber', '$streetNumber',
             '$streetName', '$suburb', '$destinationSuburb',
-            '$pickUpDate', '$pickUpTime', '$status', '$cars', '$assignedBy'
+            '$pickUpDate', '$pickUpTime', '$pickUpDateAndTime', '$status', '$cars', '$assignedBy'
         )
     ";
 
@@ -269,21 +274,20 @@ function addPassengers()
                     sweetAlertMsg("Oh No...", "Error Occurred, please recheck your pick-up TIME", "error", "OK");
                 }
 
-
                 // If the date is NOT the same as today, NO NEED to check for PICK-UP TIME
             } else if ($date1 > $date2) {
                 $sql = "INSERT INTO $sql_table (
     bookingRefNo, customerName, phoneNumber,
-    unitNumber, streetNumber, streetName,
-    suburb, destinationSuburb, pickUpDate,
-    pickUpTime, status, carsNeed, assignedBy
+        unitNumber, streetNumber, streetName,
+        suburb, destinationSuburb, pickUpDate,
+        pickUpTime, pickUpDateAndTime, status, carsNeed, assignedBy
 )
 VALUES
     (
         '$referenceNumber', '$customerName',
         '$phoneNumber', '$unitNumber', '$streetNumber',
         '$streetName', '$suburb', '$destinationSuburb',
-        '$pickUpDate', '$pickUpTime', '$status', '$cars', '$assignedBy'
+        '$pickUpDate', '$pickUpTime', '$pickUpDateAndTime', '$status', '$cars', '$assignedBy'
     )
 ";
 
@@ -308,7 +312,7 @@ VALUES
 
 /**
  * loginDrivers
- * 
+ *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function loginDrivers()
@@ -395,7 +399,7 @@ function loginDrivers()
 
 /**
  * registerDrivers
- * 
+ *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function registerDrivers()
@@ -527,7 +531,7 @@ function registerDrivers()
 
 /**
  * assignBookingManual
- * 
+ *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function assignBookingManual($bookingRefNo)
@@ -536,7 +540,7 @@ function assignBookingManual($bookingRefNo)
     require "includes/dbconf/settings.php";
 
     // Check if bookingRefNo input by user in the text box
-    if (isset($_POST["booking-brn-number"]) && !empty($_POST["booking-brn-number"])) {
+    if (isset($_POST["booking"]) && !empty($_POST["booking"])) {
         $driver_name = $_SESSION["username"];
         $update = "UPDATE passengers SET status = 'Assigned',  assignedBy = '" . $driver_name . "' WHERE bookingRefNo = '" . $bookingRefNo . "'";
 

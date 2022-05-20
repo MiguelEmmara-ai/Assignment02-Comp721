@@ -92,6 +92,10 @@ function addBooking() {
     }
 }
 
+/**
+ * validateDate
+ * @returns true or false
+ */
 function validateDate(date, todaysdate) {
     if (date < todaysdate) {
         $(document).ready(function() {
@@ -110,6 +114,10 @@ function validateDate(date, todaysdate) {
     return true;
 }
 
+/**
+ * validateTime
+ * @returns true or false
+ */
 function validateTime(inputTime, currentTime) {
     if (inputTime < currentTime) {
         $(document).ready(function() {

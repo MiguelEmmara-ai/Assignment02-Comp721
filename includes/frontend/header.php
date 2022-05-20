@@ -1,14 +1,30 @@
 <?php
-if (!file_exists('includes/dbconf/settings.php')) {
+
+// Since this header file is everywhere,
+// we can check if includes/(dbconf or backend)/settings.php is not exist
+// if true then we go through the script installation
+if (!file_exists('includes/dbconf/settings.php') || !file_exists('includes/backend/settings.php')) {
     header('location:install.php');
     die();
 }
+
+/*
+|--------------------------------------------------------------------------
+| Access Restriction
+|--------------------------------------------------------------------------
+|
+| Here is the declaration that user or visitor
+| can access the page
+| all the (!defined('MY_CONSTANT')) meaning pages that CANNOT be access.
+|
+ */
 
 if (!defined('MY_CONSTANT')) {
     // You can show a message
     die('Access not allowed!');
     exit;  // This line is needed to stop script execution
 }
+
 ?>
 
 <head>

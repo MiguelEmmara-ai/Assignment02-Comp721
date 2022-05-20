@@ -1,13 +1,27 @@
 <?php
+
+/*
+|--------------------------------------------------------------------------
+| Access Restriction
+|--------------------------------------------------------------------------
+|
+| Here is the declaration that user or visitor
+| can access the page
+| all the (!defined('MY_CONSTANT')) meaning pages that CANNOT be access.
+|
+ */
+
 if (!defined('MY_CONSTANT')) {
     // You can show a message
     die('Access not allowed!');
-    exit;  // This line is needed to stop script execution
+    exit; // This line is needed to stop script execution
 }
 
 /**
- * check If User LoggedIn, if not then redirect him to login page
+ * Check User Logged In
  * 
+ * Check If User LoggedIn, if not then redirect him to login page
+ *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function checkUserLoggedIn()
@@ -22,13 +36,15 @@ function checkUserLoggedIn()
 }
 
 /**
- * checkUserLoggedInRedirect
+ * Check User Logged In Redirect
  * 
+ * Check if the user is already logged in, if yes then redirect him to admin page
+ *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function checkUserLoggedInRedirect()
 {
-    // Check if the user is already logged in, if yes then redirect him to welcome page
+    // Check if the user is already logged in, if yes then redirect him to admin page
     if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
         header("location: admin.php");
         exit;
@@ -38,8 +54,8 @@ function checkUserLoggedInRedirect()
 }
 
 /**
- * logoutDrivers
- * 
+ * Logout Drivers
+ *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function logoutDrivers()
@@ -63,22 +79,22 @@ function logoutDrivers()
 
 /**
  * sweetAlertMsg
- * 
+ *
  * @param string   $title   The title of the popup, as HTML.
  * @param string   $text    A description for the popup. If text and html parameters are provided in the same time, html will be used.
  * @param string   $icon    The icon of the popup. SweetAlert2 comes with 5 built-in icon which will show a corresponding icon animation: warning, error, success, info, and question.
  * @param string   $btn    Button Text.
- * 
- * 
+ *
+ *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function sweetAlertMsg($title, $text, $icon, $btn)
 {
     echo '
     <script type="text/javascript">
-    
+
     $(document).ready(function(){
-    
+
         swal({
             html: true,
             title: "' . $title . '",
@@ -87,30 +103,30 @@ function sweetAlertMsg($title, $text, $icon, $btn)
             button: "' . $btn . '",
         })
           });
-    
+
     </script>
     ';
 }
 
 /**
  * sweetAlertMsgReturn
- * 
+ *
  * @param string   $title   The title of the popup, as HTML.
  * @param string   $text    A description for the popup. If text and html parameters are provided in the same time, html will be used.
  * @param string   $icon    The icon of the popup. SweetAlert2 comes with 5 built-in icon which will show a corresponding icon animation: warning, error, success, info, and question.
  * @param string   $btn    Button Text.
  * @param string   $return  Window Location href
- *  
- * 
+ *
+ *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function sweetAlertMsgReturn($title, $text, $icon, $btn, $return)
 {
     echo '
     <script type="text/javascript">
-    
+
     $(document).ready(function(){
-    
+
         swal({
             html: true,
             title: "' . $title . '",
@@ -121,7 +137,7 @@ function sweetAlertMsgReturn($title, $text, $icon, $btn, $return)
             window.location.href = "' . $return . '";
         })
           });
-    
+
     </script>
     ';
 }

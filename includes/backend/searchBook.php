@@ -32,14 +32,16 @@ require dirname(__FILE__) . "/../dbconf/settings.php";
 |--------------------------------------------------------------------------
 |
 | make query to select
-| * FROM passengers WHERE status = 'Unassigned'
+| * FROM passengers WHERE bookingRefNo = '$bookingRefNo'
 | then display it onto the table
 |
  */
 
 mysqli_select_db($conn, $dbnm);
 
-$query = "SELECT * FROM passengers WHERE status = 'Unassigned'";
+$bookingRefNo = $_GET["number"];
+
+$query = "SELECT * FROM passengers WHERE bookingRefNo = '$bookingRefNo'";
 
 $result = mysqli_query($conn, $query);
 ?>
@@ -87,7 +89,6 @@ $result = mysqli_query($conn, $query);
                 <?php else: ?>
                     <td class="text-center align-middle" style="max-height: 60px;height: 60px;"><a class="btn btn-primary" role="button" onClick="updateAssignCab('<?=$row["bookingRefNo"]?>')"><i class="far fa-paper-plane"></i>&nbsp;ASSIGN</a></td>
                 <?php endif;?>
-
             </tr>
         </tbody>
 

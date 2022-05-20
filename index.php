@@ -11,9 +11,86 @@
 <html>
 
 <?php
+
+/*
+|--------------------------------------------------------------------------
+| Access Restriction
+|--------------------------------------------------------------------------
+|
+| Here is the declaration that user or visitor
+| can access the page
+| all the define('MY_CONSTANT', 1) meaning pages that can be access.
+|
+ */
+
 define('MY_CONSTANT', 1);
+
+/*
+|--------------------------------------------------------------------------
+| Title Variable
+|--------------------------------------------------------------------------
+|
+| Title variable used to
+| make dynamic title depending
+| on the page where user are on.
+|
+ */
+
 $title = "Cabs Online | Book A Taxi Ride With Us Today!";
+<<<<<<< HEAD
 include dirname(__FILE__) . "/includes/frontend/indexHeader.php"; ?>
+=======
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/header
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/header
+| for displaying the header
+|
+ */
+require dirname(__FILE__) . "/includes/frontend/header.php";?>
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/nav
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/nav
+| for displaying the navbar
+|
+ */
+
+require 'includes/frontend/nav.php';
+?>
+    <!-- Start: Header Blue -->
+    <header class="header-blue">
+        <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+            <div class="container-fluid"><a class="navbar-brand" href="#">Cabs Online</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Hidden Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                </div>
+            </div>
+        </nav>
+        <div class="container hero">
+            <div id="image-taxi-row" class="row">
+                <!-- Start: Text -->
+                <div class="col-12 col-lg-6 col-xl-5 offset-xl-1 text-center">
+                    <h1 data-aos="zoom-in" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" style="color: #3b3b3b;font-weight: bold;"><strong>CHEAP &amp; TRUSTED</strong><br><strong>TAXI COMPANY</strong><br></h1>
+                    <p data-aos="zoom-in" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" style="color: #3b3b3b;font-weight: bold;"><strong><em>Enjoy Your Comfortable Trip With Us!</em></strong><br></p>
+                    <a class="btn btn-light btn-lg action-button" role="button" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="1000" data-aos-once="true" href="index.php#about" style="background: #f6b800;">Learn More</a>
+                    <a class="btn btn-dark btn-lg" role="button" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="1000" data-aos-once="true" href="booking.php" style="border-radius: 40px;">Book A Ride</a>
+                    <div class="container mt-3">
+                        <img data-aos="zoom-in-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="img-fluid max-width: 70% taxi-image" src="assets/img/taxi-header.png" width="304" height="236">
+                    </div>
+
+                </div><!-- End: Text -->
+>>>>>>> origin/dev/AutVersion
 
 <?php include('includes/frontend/nav.php'); ?>
 <!-- Start: Header Blue -->
@@ -107,6 +184,7 @@ include dirname(__FILE__) . "/includes/frontend/indexHeader.php"; ?>
                 </ul>
             </div>
         </div>
+<<<<<<< HEAD
     </div>
 </section>
 <!-- Start: Highlight Phone -->
@@ -120,6 +198,31 @@ include dirname(__FILE__) . "/includes/frontend/indexHeader.php"; ?>
                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked required>
                         <img src="./assets/img/cars/Scooter.png" alt="Car 1">
                     </label>
+=======
+    </section>
+    <!-- End: Highlight Phone -->
+    <section data-aos="zoom-in" data-aos-duration="1150" data-aos-once="true" class="py-5">
+        <h3 id="seen" class="text-center">As Seen On</h3>
+        <div class="container">
+            <div class="row">
+            <div class="col-sm-6 col-md-3"><a href="https://www.google.com/" target="_blank"><img class="img-fluid d-block mx-auto" src="assets/img/clients/google.jpg"></a></div>
+                <div class="col-sm-6 col-md-3"><a href="https://www.facebook.com/" target="_blank"><img class="img-fluid d-block mx-auto" src="assets/img/clients/facebook.jpg"></a></div>
+                <div class="col-sm-6 col-md-3"><a href="https://www.airbnb.co.nz/" target="_blank"><img class="img-fluid d-block mx-auto" src="assets/img/clients/airbnb.jpg"></a></div>
+                <div class="col-sm-6 col-md-3"><a href="https://www.netflix.com/" target="_blank"><img class="img-fluid d-block mx-auto" src="assets/img/clients/netflix.jpg"></a></div>
+            </div>
+        </div>
+    </section>
+    <!-- Start: Highlight Phone -->
+    <section class="highlight-phone" style="background: rgb(255,192,0);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- Start: Intro -->
+                    <div class="intro">
+                        <h5 style="color: rgb(0,0,0);">Join The Team<br></h5>
+                        <h2><strong>Become Our Driver, Work On Your Term!</strong><br></h2>
+                    </div><!-- End: Intro -->
+>>>>>>> origin/dev/AutVersion
                 </div>
                 <div class="form-check form-check-inline">
                     <label>
@@ -139,6 +242,7 @@ include dirname(__FILE__) . "/includes/frontend/indexHeader.php"; ?>
                         <img src="./assets/img/cars/Sedan.png" alt="Car 4">
                     </label>
 
+<<<<<<< HEAD
                 </div>
                 <div class="form-check form-check-inline">
                     <label>
@@ -147,6 +251,25 @@ include dirname(__FILE__) . "/includes/frontend/indexHeader.php"; ?>
                     </label>
                 </div>
             </div>
+=======
+    <?php
+
+/*
+|--------------------------------------------------------------------------
+| Require frontend/footer
+|--------------------------------------------------------------------------
+|
+| include file
+| frontend/footer
+| for displaying the footer
+|
+ */
+
+require 'includes/frontend/footer.php';
+
+?>
+</body>
+>>>>>>> origin/dev/AutVersion
 
             <div class="col-md-3">
                 <input type="text" class="form-control" id="sbname" placeholder="🏡 From Address..." name="sbname">

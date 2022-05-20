@@ -1,13 +1,39 @@
 <?php
+<<<<<<< HEAD
 if (!file_exists('includes/dbconf/settings.php')) {
+=======
+
+// Since this header file is everywhere,
+// we can check if includes/(dbconf or backend)/settings.php is not exist
+// if true then we go through the script installation
+if (!file_exists('includes/dbconf/settings.php') || !file_exists('includes/backend/settings.php')) {
+>>>>>>> origin/dev/AutVersion
     header('location:install.php');
     die();
 }
 
+<<<<<<< HEAD
 if (!defined('MY_CONSTANT')) {
     // You can show a message
     die('Access not allowed!');
     exit;  // This line is needed to stop script execution
+=======
+/*
+|--------------------------------------------------------------------------
+| Access Restriction
+|--------------------------------------------------------------------------
+|
+| Here is the declaration that user or visitor
+| can access the page
+| all the (!defined('MY_CONSTANT')) meaning pages that CANNOT be access.
+|
+ */
+
+if (!defined('MY_CONSTANT')) {
+    // You can show a message
+    die('Access not allowed!');
+    exit; // This line is needed to stop script execution
+>>>>>>> origin/dev/AutVersion
 }
 ?>
 
@@ -15,7 +41,11 @@ if (!defined('MY_CONSTANT')) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
+<<<<<<< HEAD
     <title><?= $title; ?></title>
+=======
+    <title><?=$title;?></title>
+>>>>>>> origin/dev/AutVersion
 
     <link rel="icon" type="image/x-icon" href="./assets/img/taxi-logo.ico">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">

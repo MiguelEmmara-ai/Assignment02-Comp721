@@ -1,9 +1,22 @@
 <?php
+
+/*
+|--------------------------------------------------------------------------
+| Access Restriction
+|--------------------------------------------------------------------------
+|
+| Here is the declaration that user or visitor
+| can access the page
+| all the (!defined('MY_CONSTANT')) meaning pages that CANNOT be access.
+|
+ */
+
 if (!defined('MY_CONSTANT')) {
     // You can show a message
     die('Access not allowed!');
     exit;  // This line is needed to stop script execution
 }
+
 ?>
 <!-- Start: Footer Dark -->
 <footer class="footer-dark">

@@ -32,14 +32,14 @@ require dirname(__FILE__) . "/../dbconf/settings.php";
 |--------------------------------------------------------------------------
 |
 | make query to select
-| * FROM passengers WHERE status = 'Unassigned'
+| * FROM passengers WHERE pickUpTime > now() - interval 2 hour AND status = 'Unassigned'
 | then display it onto the table
 |
  */
 
 mysqli_select_db($conn, $dbnm);
 
-$query = "SELECT * FROM passengers WHERE status = 'Unassigned'";
+$query = "SELECT * FROM passengers WHERE pickUpTime > now() - interval 2 hour AND status = 'Unassigned'";
 
 $result = mysqli_query($conn, $query);
 ?>
@@ -64,38 +64,38 @@ $result = mysqli_query($conn, $query);
         </tr>
     </thead>
 
-    <?php while ($row = mysqli_fetch_assoc($result)) {?>
+    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
 
         <tbody class="text-center">
-            <tr id="<?=$row["bookingRefNo"]?>">
-                <td><?=$row["bookingRefNo"]?></td>
-                <td><?=$row["customerName"]?></td>
-                <td><?=$row["phoneNumber"]?></td>
-                <td><?=$row["unitNumber"]?></td>
-                <td><?=$row["streetNumber"]?></td>
-                <td><?=$row["streetName"]?></td>
-                <td><?=$row["suburb"]?></td>
-                <td><?=$row["destinationSuburb"]?></td>
-                <td><?=$row["pickUpDate"]?></td>
-                <td><?=$row["pickUpTime"]?></td>
-                <td><?=$row["status"]?></td>
-                <td><img src="assets\img\cars\<?=$row["carsNeed"]?>.png" alt="<?=$row["carsNeed"]?>"><br><?=$row["carsNeed"]?></td>
-                <td><?=$row["assignedBy"]?></td>
+            <tr id="<?= $row["bookingRefNo"] ?>">
+                <td><?= $row["bookingRefNo"] ?></td>
+                <td><?= $row["customerName"] ?></td>
+                <td><?= $row["phoneNumber"] ?></td>
+                <td><?= $row["unitNumber"] ?></td>
+                <td><?= $row["streetNumber"] ?></td>
+                <td><?= $row["streetName"] ?></td>
+                <td><?= $row["suburb"] ?></td>
+                <td><?= $row["destinationSuburb"] ?></td>
+                <td><?= $row["pickUpDate"] ?></td>
+                <td><?= $row["pickUpTime"] ?></td>
+                <td><?= $row["status"] ?></td>
+                <td><img src="assets\img\cars\<?= $row["carsNeed"] ?>.png" alt="<?= $row["carsNeed"] ?>"><br><?= $row["carsNeed"] ?></td>
+                <td><?= $row["assignedBy"] ?></td>
 
-                <?php if ($row['status'] == "Assigned"): ?>
+                <?php if ($row['status'] == "Assigned") : ?>
                     <td class="text-center align-middle" style="max-height: 60px;height: 60px;"><a class="btn btn-primary disabled" role="button" aria-disabled="true"><i class="far fa-paper-plane"></i>&nbsp;ASSIGN</a></td>
-                <?php else: ?>
-                    <td class="text-center align-middle" style="max-height: 60px;height: 60px;"><a class="btn btn-primary" role="button" onClick="updateAssignCab('<?=$row["bookingRefNo"]?>')"><i class="far fa-paper-plane"></i>&nbsp;ASSIGN</a></td>
-                <?php endif;?>
+                <?php else : ?>
+                    <td class="text-center align-middle" style="max-height: 60px;height: 60px;"><a class="btn btn-primary" role="button" onClick="updateAssignCab('<?= $row["bookingRefNo"] ?>')"><i class="far fa-paper-plane"></i>&nbsp;ASSIGN</a></td>
+                <?php endif; ?>
 
             </tr>
         </tbody>
 
-    <?php }?>
+    <?php } ?>
 
     <?php
-// Frees up the memory, after using the result pointer
-mysqli_free_result($result);
+    // Frees up the memory, after using the result pointer
+    mysqli_free_result($result);
 
-// Close Connection
-mysqli_close($conn);?>
+    // Close Connection
+    mysqli_close($conn); ?>

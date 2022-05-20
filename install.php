@@ -30,6 +30,7 @@ if (isset($_POST['submit'])) {
         $msg = mysqli_connect_error();
     } else {
         copy("includes/dbconf/settings.inc.config.php", "includes/dbconf/settings.php");
+        copy("includes/dbconf/settings.inc.config.php", "includes/backend/settings.php");
         $file = "includes/dbconf/settings.php";
         file_put_contents($file, str_replace("db_host", $host, file_get_contents($file)));
         file_put_contents($file, str_replace("db_username", $user, file_get_contents($file)));
@@ -78,8 +79,8 @@ if (isset($_POST['submit'])) {
     <main role="main" class="container">
 
         <?php
-        if ((isset($_GET['step'])) && $_GET['step'] == 2) {
-        ?>
+if ((isset($_GET['step'])) && $_GET['step'] == 2) {
+    ?>
 
             <form class="frm" method="post">
                 <div class="form-group">
@@ -99,8 +100,8 @@ if (isset($_POST['submit'])) {
             </form>
 
         <?php
-        } else {
-        ?>
+} else {
+    ?>
 
             <table class="table">
                 <thead>
@@ -114,77 +115,77 @@ if (isset($_POST['submit'])) {
                         <th scope="row">PHP Version</th>
                         <td>
                             <?php
-                            $is_error = "";
-                            $php_version = phpversion();
-                            if ($php_version > 5) {
-                                echo "<span class='success'>" . $php_version . "</span>";
-                            } else {
-                                echo "<span class='error'>" . $php_version . "</span>";
-                                $is_error = 'yes';
-                            }
-                            ?>
+$is_error = "";
+    $php_version = phpversion();
+    if ($php_version > 5) {
+        echo "<span class='success'>" . $php_version . "</span>";
+    } else {
+        echo "<span class='error'>" . $php_version . "</span>";
+        $is_error = 'yes';
+    }
+    ?>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">Curl Install</th>
                         <td>
                             <?php
-                            $curl_version = function_exists('curl_version');
-                            if ($curl_version) {
-                                echo "<span class='success'>Yes</span>";
-                            } else {
-                                echo "<span class='error'>No</span>";
-                                $is_error = 'yes';
-                            }
-                            ?>
+$curl_version = function_exists('curl_version');
+    if ($curl_version) {
+        echo "<span class='success'>Yes</span>";
+    } else {
+        echo "<span class='error'>No</span>";
+        $is_error = 'yes';
+    }
+    ?>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">Mail Function</th>
                         <td>
                             <?php
-                            $mail = function_exists('mail');
-                            if ($mail) {
-                                echo "<span class='success'>Yes</span>";
-                            } else {
-                                echo "<span class='error'>No</span>";
-                                $is_error = 'yes';
-                            }
-                            ?>
+$mail = function_exists('mail');
+    if ($mail) {
+        echo "<span class='success'>Yes</span>";
+    } else {
+        echo "<span class='error'>No</span>";
+        $is_error = 'yes';
+    }
+    ?>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">Session Working</th>
                         <td>
                             <?php
-                            $_SESSION['IS_WORKING'] = 1;
-                            if (!empty($_SESSION['IS_WORKING'])) {
-                                echo "<span class='success'>Yes</span>";
-                            } else {
-                                echo "<span class='error'>No</span>";
-                                $is_error = 'yes';
-                            }
-                            ?>
+$_SESSION['IS_WORKING'] = 1;
+    if (!empty($_SESSION['IS_WORKING'])) {
+        echo "<span class='success'>Yes</span>";
+    } else {
+        echo "<span class='error'>No</span>";
+        $is_error = 'yes';
+    }
+    ?>
                         </td>
                     </tr>
 
                     <tr>
                         <td colspan="2">
                             <?php
-                            if ($is_error == '') {
-                            ?>
+if ($is_error == '') {
+        ?>
                                 <a href="?step=2"><button type="button" class="btn btn-success">Next</button></a>
                             <?php
-                            } else {
-                            ?><button type="button" class="btn btn-danger">Error</button><?php
-                                                                                        }
-                                                                                            ?>
+} else {
+        ?><button type="button" class="btn btn-danger">Error</button><?php
+}
+    ?>
                         </td>
                     </tr>
                 </tbody>
 
             </table>
-        <?php } ?>
+        <?php }?>
 
     </main>
 
