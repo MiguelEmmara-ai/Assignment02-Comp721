@@ -13,8 +13,8 @@ check marking scheme
         1 ✅
         2 ✅
     2.1.4
-        1 TODO check
-        2 TODO check
+        1 ✅might change later
+        2 ✅
     2.2
         1 ✅
         2 ✅
