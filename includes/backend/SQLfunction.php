@@ -38,7 +38,6 @@ function createTablePassengersIfNotExist()
         destinationSuburb TEXT,
         pickUpDate DATE NOT NULL,
         pickUpTime TIME NOT NULL,
-        pickUpDateAndTime TIMESTAMP NOT NULL,
         status ENUM('Assigned','Unassigned') NOT NULL,
         carsNeed ENUM('Scooter','Hatchback','Suv','Sedan','Van') NOT NULL,
         assignedBy TEXT NOT NULL
@@ -108,7 +107,6 @@ function addPassengers()
     global $destinationSuburb;
     global $pickUpDate;
     global $pickUpTime;
-    global $pickUpDateAndTime;
 
     global $fName_err;
     global $lName_err;
@@ -240,9 +238,6 @@ function addPassengers()
             $date1 = $pickUpDate;
             $date2 = date("Y-m-d");
 
-            // Concate Date And Time
-            $pickUpDateAndTime = $pickUpDate + $pickUpTime;
-
             // If the date is the SAME as today, NEED to check for PICK-UP TIME
             if ($date1 == $date2) {
 
@@ -255,14 +250,14 @@ function addPassengers()
         bookingRefNo, customerName, phoneNumber,
         unitNumber, streetNumber, streetName,
         suburb, destinationSuburb, pickUpDate,
-        pickUpTime, pickUpDateAndTime, status, carsNeed, assignedBy
+        pickUpTime, status, carsNeed, assignedBy
     )
     VALUES
         (
             '$referenceNumber', '$customerName',
             '$phoneNumber', '$unitNumber', '$streetNumber',
             '$streetName', '$suburb', '$destinationSuburb',
-            '$pickUpDate', '$pickUpTime', '$pickUpDateAndTime', '$status', '$cars', '$assignedBy'
+            '$pickUpDate', '$pickUpTime', '$status', '$cars', '$assignedBy'
         )
     ";
 
@@ -281,14 +276,14 @@ function addPassengers()
     bookingRefNo, customerName, phoneNumber,
         unitNumber, streetNumber, streetName,
         suburb, destinationSuburb, pickUpDate,
-        pickUpTime, pickUpDateAndTime, status, carsNeed, assignedBy
+        pickUpTime, status, carsNeed, assignedBy
 )
 VALUES
     (
         '$referenceNumber', '$customerName',
         '$phoneNumber', '$unitNumber', '$streetNumber',
         '$streetName', '$suburb', '$destinationSuburb',
-        '$pickUpDate', '$pickUpTime', '$pickUpDateAndTime', '$status', '$cars', '$assignedBy'
+        '$pickUpDate', '$pickUpTime', '$status', '$cars', '$assignedBy'
     )
 ";
 
