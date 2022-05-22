@@ -31,9 +31,13 @@ require dirname(__FILE__) . "/../dbconf/settings.php";
 | Select Database
 |--------------------------------------------------------------------------
 |
-| make query to select
-| * FROM passengers WHERE pickUpTime > now() - interval 2 hour AND status = 'Unassigned'
+| Make query to select
+| * FROM passengers WHERE CONCAT(pickupDate, ' ', pickupTime) BETWEEN NOW() AND NOW() + INTERVAL 2 HOUR
 | then display it onto the table
+|
+| This NOW() function will return the server time
+| hence, it will compare the booking time and date with the server time
+| depending where this app installed on the server is, it will make a difference
 |
  */
 
