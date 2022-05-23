@@ -14,27 +14,6 @@
 session_start();
 
 // Define variables and initialize with empty values
-global $fName;
-global $lName;
-global $customerName;
-global $phoneNumber;
-global $unitNumber;
-global $streetNumber;
-global $streetName;
-global $suburb;
-global $destinationSuburb;
-global $pickUpDate;
-global $pickUpTime;
-
-global $fName_err;
-global $lName_err;
-global $phoneNumber_err;
-global $unitNumber_err;
-global $streetNumber_err;
-global $streetName_err;
-global $suburb_err;
-global $destinationSuburb_err;
-
 $fName
 = $lName
 = $unitNumber
@@ -119,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $suburb = trim($_POST["sbname"]);
     }
-
+    
     // Validate destinationSuburb
     if (empty(trim($_POST["dsbname"]))) {
         $destinationSuburb_err = "Please enter a valid Destination Suburb.";

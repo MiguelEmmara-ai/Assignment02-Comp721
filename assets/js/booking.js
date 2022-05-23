@@ -50,6 +50,13 @@ function addBooking() {
             validated = true;
         }
 
+        // validate phone number
+        if (!/^[0-9]+$/.test(phone) && !/^[0-9]+$/.test(phone) && !/^[0-9]+$/.test(phone) && !/^[0-9]+$/.test(phone)) {
+            alert("Please only enter numeric characters only! (Allowed input:0-9)")
+            validated = false;
+            return false;
+        }
+
         if (validated) {
 
             // encodeURIComponent(bookingDate)
@@ -96,6 +103,13 @@ function addBooking() {
                 })
             });
         }
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something is wrong buddy',
+            footer: 'Please Try Again Later'
+        })
     }
 }
 
