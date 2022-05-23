@@ -69,7 +69,6 @@ function addBooking() {
                 "&pickUpTime=" + encodeURIComponent(pickUpTime) +
                 "&inlineRadioOptions=" + encodeURIComponent(inlineRadioOptions);
 
-
             xhr.open("POST", url, true);
 
             // Send the proper header information along with the request
@@ -107,14 +106,10 @@ function addBooking() {
 function validateDate(date, todaysdate) {
     if (date < todaysdate) {
         $(document).ready(function() {
-            swal({
-                html: true,
-                title: "Oh No...",
-                text: "Date Error",
-                icon: "error",
-                button: "OK",
-            }).then(function() {
-                window.location.href = "booking.html";
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Date error, please recheck your pick-up DATE'
             })
         });
         return false;
@@ -132,8 +127,7 @@ function validateTime(inputTime, currentTime) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Time Error',
-                footer: '<a href="">Why do I have this issue?</a>'
+                text: 'Date error, please recheck your pick-up Time'
             })
         });
         return false;
