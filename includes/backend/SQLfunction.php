@@ -25,8 +25,8 @@ if (!defined('MY_CONSTANT')) {
  * @param  string  $sql_table
  * @param  string  $referenceNumber
  * @return boolean
- * 
- * 
+ *
+ *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function uniqueRefCheck($conn, $sql_table, $referenceNumber)
@@ -45,31 +45,37 @@ function createTablePassengersIfNotExist()
     // Include config file
     require "includes/dbconf/settings.php";
 
-    // Sql to create table If Not Exists
-    $sql = "CREATE TABLE IF NOT EXISTS passengers(
-        bookingRefNo VARCHAR(255) NOT NULL PRIMARY KEY,
-        customerName TEXT NOT NULL,
-        phoneNumber INT(12) NOT NULL,
-        unitNumber TEXT,
-        streetNumber TEXT NOT NULL,
-        streetName TEXT NOT NULL,
-        suburb TEXT,
-        destinationSuburb TEXT,
-        pickUpDate DATE NOT NULL,
-        pickUpTime TIME NOT NULL,
-        status ENUM('Assigned','Unassigned') NOT NULL,
-        carsNeed ENUM('Scooter','Hatchback','Suv','Sedan','Van') NOT NULL,
-        assignedBy TEXT NOT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = latin1;";
+    // Check if Table Exists
+    $query = "SELECT * FROM passengers";
+    $result = mysqli_query($conn, $query);
 
-    if ($conn->query($sql) === true) {
-        echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Table Passengers Created Successfully');
-        </SCRIPT>");
-    } else {
-        echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Error creating table!');
-        </SCRIPT>");
+    if (empty($result)) {
+        // Sql to create table If Not Exists
+        $sql = "CREATE TABLE IF NOT EXISTS passengers(
+            bookingRefNo VARCHAR(255) NOT NULL PRIMARY KEY,
+            customerName TEXT NOT NULL,
+            phoneNumber INT(12) NOT NULL,
+            unitNumber TEXT,
+            streetNumber TEXT NOT NULL,
+            streetName TEXT NOT NULL,
+            suburb TEXT,
+            destinationSuburb TEXT,
+            pickUpDate DATE NOT NULL,
+            pickUpTime TIME NOT NULL,
+            status ENUM('Assigned','Unassigned') NOT NULL,
+            carsNeed ENUM('Scooter','Hatchback','Suv','Sedan','Van') NOT NULL,
+            assignedBy TEXT NOT NULL
+        ) ENGINE = InnoDB DEFAULT CHARSET = latin1;";
+
+        if ($conn->query($sql) === true) {
+            echo ("<SCRIPT LANGUAGE='JavaScript'>
+            window.alert('Table Passengers Created Successfully');
+            </SCRIPT>");
+        } else {
+            echo ("<SCRIPT LANGUAGE='JavaScript'>
+            window.alert('Error creating table!');
+            </SCRIPT>");
+        }
     }
 
     // Close connection
@@ -86,25 +92,34 @@ function createTableIfDriversNotExist()
     // Include config file
     require "includes/dbconf/settings.php";
 
-    // Sql to create table If Not Exists
-    $sql = "CREATE TABLE IF NOT EXISTS drivers (
-        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        email VARCHAR(255) NOT NULL UNIQUE,
-        username VARCHAR(50) NOT NULL UNIQUE,
-        password VARCHAR(255) NOT NULL,
-        carsAvailability VARCHAR(200) NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-      ) ENGINE = InnoDB DEFAULT CHARSET = latin1;";
+    // Check if Table Exists
+    $query = "SELECT * FROM drivers";
+    $result = mysqli_query($conn, $query);
 
-    if ($conn->query($sql) === true) {
-        echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Table Driver Created Successfully');
-        </SCRIPT>");
-    } else {
-        echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Error creating table!');
-        </SCRIPT>");
+    if (empty($result)) {
+        // Sql to create table If Not Exists
+        $sql = "CREATE TABLE IF NOT EXISTS drivers (
+            id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+            email VARCHAR(255) NOT NULL UNIQUE,
+            username VARCHAR(50) NOT NULL UNIQUE,
+            password VARCHAR(255) NOT NULL,
+            carsAvailability VARCHAR(200) NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+          ) ENGINE = InnoDB DEFAULT CHARSET = latin1;";
+
+        if ($conn->query($sql) === true) {
+            echo ("<SCRIPT LANGUAGE='JavaScript'>
+            window.alert('Table Driver Created Successfully');
+            </SCRIPT>");
+        } else {
+            echo ("<SCRIPT LANGUAGE='JavaScript'>
+            window.alert('Error creating table!');
+            </SCRIPT>");
+        }
     }
+
+    // Close connection
+    $conn->close();
 }
 
 /**
@@ -551,7 +566,7 @@ function registerDrivers()
  * passing the bookingRefNo
  *
  * @param      $bookingRefNo
- * 
+ *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function assignBookingManual($bookingRefNo)
