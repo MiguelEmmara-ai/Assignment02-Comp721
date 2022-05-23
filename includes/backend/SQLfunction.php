@@ -1,4 +1,15 @@
 <?php
+/*
+|--------------------------------------------------------------------------
+| Access Restriction
+|--------------------------------------------------------------------------
+|
+| Here is the declaration that user or visitor
+| can access the page
+| all the (!defined('MY_CONSTANT')) meaning pages that CANNOT be access.
+|
+ */
+
 if (!defined('MY_CONSTANT')) {
     // You can show a message
     die('Access not allowed!');
@@ -9,6 +20,14 @@ if (!defined('MY_CONSTANT')) {
  * Check for unique reference number in database.
  * using the input '$referenceNumber'
  * as key and search across database.
+ *
+ * @param  mysqli  $conn
+ * @param  string  $sql_table
+ * @param  string  $referenceNumber
+ * @return boolean
+ * 
+ * 
+ * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function uniqueRefCheck($conn, $sql_table, $referenceNumber)
 {
@@ -44,13 +63,13 @@ function createTablePassengersIfNotExist()
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;";
 
     if ($conn->query($sql) === true) {
-        // echo "Table post created successfully";
-        // echo "<br>";
+        echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.alert('Table Passengers Created Successfully');
+        </SCRIPT>");
     } else {
         echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Error creating table!');
         </SCRIPT>");
-        // echo "<br>";
     }
 
     // Close connection
@@ -78,13 +97,13 @@ function createTableIfDriversNotExist()
       ) ENGINE = InnoDB DEFAULT CHARSET = latin1;";
 
     if ($conn->query($sql) === true) {
-        // echo "Table post created successfully";
-        // echo "<br>";
+        echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.alert('Table Driver Created Successfully');
+        </SCRIPT>");
     } else {
         echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Error creating table!');
         </SCRIPT>");
-        // echo "<br>";
     }
 }
 
@@ -531,8 +550,9 @@ function registerDrivers()
  * This Method used for assigning booking manual through user input
  * passing the bookingRefNo
  *
- * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  * @param      $bookingRefNo
+ * 
+ * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function assignBookingManual($bookingRefNo)
 {

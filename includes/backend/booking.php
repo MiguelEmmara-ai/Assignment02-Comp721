@@ -13,6 +13,19 @@
 
 session_start();
 
+/*
+|--------------------------------------------------------------------------
+| Require dbconf/settings.php
+|--------------------------------------------------------------------------
+|
+| include file
+| dbconf/settings.php
+| for connect to database
+|
+ */
+
+require dirname(__FILE__) . "/settings.php";
+
 // Define variables and initialize with empty values
 $fName
 = $lName
@@ -33,9 +46,7 @@ $fName_err
 = $suburb_err
 = $destinationSuburb_err = "";
 
-// Include config file
-require_once dirname(__FILE__) . "/settings.php";
-
+// Set Default Time Zone
 date_default_timezone_set('Pacific/Auckland');
 
 // Processing form data when form is submitted
