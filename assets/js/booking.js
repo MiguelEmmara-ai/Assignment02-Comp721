@@ -50,7 +50,7 @@ function addBooking() {
             validated = true;
         }
 
-        // validate phone number
+        // validate number input
         if (!/^[0-9]+$/.test(phone) && !/^[0-9]+$/.test(phone) && !/^[0-9]+$/.test(phone) && !/^[0-9]+$/.test(phone)) {
             alert("Please only enter numeric characters only! (Allowed input:0-9)")
             validated = false;
