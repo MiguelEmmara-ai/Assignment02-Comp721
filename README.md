@@ -6,7 +6,7 @@ the knowledge and programming skills to work with PHP and MySQL PHP on the
 server, as learned in Assignment One and the first part of this course.
 
 # How To Install
-1. Download The [Script](https://github.com/MiguelEmmara-ai/Assignment02-Comp721/releases/download/v2.0/Assignment02-Comp721-v2.0.zip)
+1. Download The [Script](https://github.com/MiguelEmmara-ai/Assignment02-Comp721/releases/download/v2.1/Assignment02-Comp721-v2.1.zip)
 2. Fire Up your web server (xampp/wamp)
 3. Paste Or Upload the file onto the webserver
 4. Acces the index.php
