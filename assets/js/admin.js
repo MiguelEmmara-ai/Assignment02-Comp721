@@ -6,7 +6,7 @@ function showall() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("txtHint").innerHTML = this.responseText;
+            document.getElementById("tableID").innerHTML = this.responseText;
         }
     }
     xmlhttp.open("GET", 'includes/backend/getAllBook.php', true);
@@ -14,18 +14,60 @@ function showall() {
 }
 
 /**
- * This function shows all available (Unassigned) Passengers by passing information to the server
+ * This function shows recent bookings (within 2 hours) by passing information to the server
  * @send XML object
  */
-function shoAvailPassengers() {
+function showRecent() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("txtHint").innerHTML = this.responseText;
+            document.getElementById("tableID").innerHTML = this.responseText;
+        }
+    }
+    xmlhttp.open("GET", 'includes/backend/getRecentBook.php', true);
+    xmlhttp.send();
+}
+
+/**
+ * This function shows all available (Unassigned) Passengers by passing information to the server
+ * @send XML object
+ */
+function showAvailPassengers() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("tableID").innerHTML = this.responseText;
         }
     }
     xmlhttp.open("GET", 'includes/backend/getAvailBook.php', true);
     xmlhttp.send();
+}
+
+/**
+ * This function search specific passengers based on their bookingRefNo
+ * @send XML object
+ */
+function searchPassengers(bookingRefNo) {
+    var xhttp = createRequest();
+
+    if (bookingRefNo == "") {
+        Swal.fire(
+            'Missing Something?',
+            'You Forgotten To Put The Booking Number<br><br>Want to know the recent books?<br>Click On The "Show Recent Bookings"',
+            'question'
+        )
+        return;
+    }
+
+    xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("tableID").innerHTML = this.responseText;
+        }
+    }
+    xhttp.open("GET", "includes/backend/searchBook.php?number=" + String(bookingRefNo), true);
+    xhttp.send();
 }
 
 /**
@@ -36,7 +78,7 @@ function updateAssignCab(bookingRefNo) {
     var xhttp = createRequest();
 
     if (bookingRefNo == "") {
-        document.getElementById("txtHint").innerHTML = "";
+        document.getElementById("tableID").innerHTML = "";
         return;
     }
 
@@ -44,14 +86,19 @@ function updateAssignCab(bookingRefNo) {
 
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
-            alert(xhttp.responseText);
+            Swal.fire(
+                'Congratulations!',
+                xhttp.responseText,
+                'success'
+            ).then(function() {
+                location.reload();
+            });
         }
     };
 
     xhttp.open("GET", "includes/backend/assignCab.php?q=" + String(bookingRefNo), true);
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhttp.send(null);
-    window.location.reload();
 }
 
 /**

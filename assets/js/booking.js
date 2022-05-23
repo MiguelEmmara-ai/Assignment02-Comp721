@@ -1,5 +1,5 @@
 /** 
- * // TODO
+ *
  * @returns XML object
  */
 function addBooking() {
@@ -33,6 +33,8 @@ function addBooking() {
         var pickUpDate = document.getElementById("pickUpDate").value;
         var pickUpTime = document.getElementById("pickUpTime").value;
 
+        var inlineRadioOptions = document.querySelector('input[name="inlineRadioOptions"]:checked').value;
+
         var validated = false;
 
         // validate if pickupTime & pickupDate is not before current date & current time
@@ -48,11 +50,20 @@ function addBooking() {
             validated = true;
         }
 
+        // validate number input
+        if (!/^[0-9]+$/.test(phone) && !/^[0-9]+$/.test(phone) && !/^[0-9]+$/.test(phone) && !/^[0-9]+$/.test(phone)) {
+            alert("Please only enter numeric characters only! (Allowed input:0-9)")
+            validated = false;
+            return false;
+        }
+
         if (validated) {
 
             // encodeURIComponent(bookingDate)
-            var url = "includes/bookingProcess.php";
+            var url = "includes/backend/booking.php";
             var params = "customerName=" + customerName +
+                "&fName=" + encodeURIComponent(fName) +
+                "&lName=" + encodeURIComponent(lName) +
                 "&bookingDate=" + encodeURIComponent(bookingDate) +
                 "&bookingTime=" + encodeURIComponent(bookingTime) +
                 "&phone=" + encodeURIComponent(phone) +
@@ -62,7 +73,8 @@ function addBooking() {
                 "&sbname=" + encodeURIComponent(sbname) +
                 "&dsbname=" + encodeURIComponent(dsbname) +
                 "&pickUpDate=" + encodeURIComponent(pickUpDate) +
-                "&pickUpTime=" + encodeURIComponent(pickUpTime);
+                "&pickUpTime=" + encodeURIComponent(pickUpTime) +
+                "&inlineRadioOptions=" + encodeURIComponent(inlineRadioOptions);
 
             xhr.open("POST", url, true);
 
@@ -70,39 +82,48 @@ function addBooking() {
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() { // Call a function when the state changes.
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    alert(xhr.responseText);
-                    // resetForm();
+                    Swal.fire(
+                        'Congratulations!',
+                        xhr.responseText,
+                        'success'
+                    ).then(function() {
+                        location.reload();
+                    });
                 }
             }
             xhr.send(params);
 
         } else {
             $(document).ready(function() {
-                swal({
-                    html: true,
-                    title: "Oh No...",
-                    text: "Something is wrong buddy",
-                    icon: "error",
-                    button: "OK",
-                }).then(function() {
-                    window.location.href = "booking.php";
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something is wrong buddy',
+                    footer: 'Make Sure Fill  All The Required Data Or Try Again Later'
                 })
             });
         }
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something is wrong buddy',
+            footer: 'Please Try Again Later'
+        })
     }
 }
 
+/**
+ * validateDate
+ * @returns true or false
+ */
 function validateDate(date, todaysdate) {
     if (date < todaysdate) {
         $(document).ready(function() {
-            swal({
-                html: true,
-                title: "Oh No...",
-                text: "Something is wrong buddy",
-                icon: "error",
-                button: "OK",
-            }).then(function() {
-                window.location.href = "booking.php";
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Date error, please recheck your pick-up DATE'
             })
         });
         return false;
@@ -110,17 +131,17 @@ function validateDate(date, todaysdate) {
     return true;
 }
 
+/**
+ * validateTime
+ * @returns true or false
+ */
 function validateTime(inputTime, currentTime) {
     if (inputTime < currentTime) {
         $(document).ready(function() {
-            swal({
-                html: true,
-                title: "Oh No...",
-                text: "Something is wrong buddy",
-                icon: "error",
-                button: "OK",
-            }).then(function() {
-                window.location.href = "booking.php";
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Date error, please recheck your pick-up Time'
             })
         });
         return false;

@@ -9,7 +9,7 @@ $dbnm = "cabsonline";
 | Create Connection
 |--------------------------------------------------------------------------
 |
-| Here are each of the database connections 
+| Here are each of the database connections
 | setup for your application.
 | simple mysqli connection setup make development simple.
 |
@@ -17,7 +17,7 @@ $dbnm = "cabsonline";
 
 $conn = new mysqli($host, $user, $pswd, $dbnm);
 
-// Check connection 
+// Check connection
 if ($conn->connect_error) {
     die("Connection Failed: " . $conn->connect_error);
 }

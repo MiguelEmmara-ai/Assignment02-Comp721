@@ -22,16 +22,15 @@ if (!file_exists('includes/dbconf/settings.php') || !file_exists('includes/backe
 if (!defined('MY_CONSTANT')) {
     // You can show a message
     die('Access not allowed!');
-    exit;  // This line is needed to stop script execution
+    exit; // This line is needed to stop script execution
 }
-
 ?>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <title><?= $title; ?></title>
+    <title><?=$title;?></title>
 
     <link rel="icon" type="image/x-icon" href="./assets/img/taxi-logo.ico">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -58,3 +57,5 @@ if (!defined('MY_CONSTANT')) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
