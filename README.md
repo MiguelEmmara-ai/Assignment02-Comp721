@@ -6,11 +6,14 @@ the knowledge and programming skills to work with PHP and MySQL PHP on the
 server, as learned in Assignment One and the first part of this course.
 
 # How To Install
-1. Download The [Script](https://github.com/MiguelEmmara-ai/Assignment02-Comp721/files/8572133/Assignment02.-.Comp721.zip)
+1. Download The [Script](https://github.com/MiguelEmmara-ai/Assignment02-Comp721/releases/download/v2.1/Assignment02-Comp721-v2.1.zip)
 2. Fire Up your web server (xampp/wamp)
 3. Paste Or Upload the file onto the webserver
 4. Acces the index.php
 5. For the first time instalation, you will run through the installation prompt
+
+# Demo
+[CabsOnline.MiguelEmmarame](https://cabsonline.miguelemmara.me/)
 
 # How To Use
 1. Book A Ride      - This page allow the passengers to book their taxi
