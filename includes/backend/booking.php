@@ -1,54 +1,52 @@
 <?php
 
-// TODO
-// ikutin aja https://github.com/mattmallow-AUT/AUT-COMP721-Assignment-2/blob/main/booking.php
-// ganti nama 
+/*
+|--------------------------------------------------------------------------
+| Initialize the session
+|--------------------------------------------------------------------------
+|
+| creates a session or resumes the current one
+| based on a session identifier passed via
+| a GET or POST request, or passed via a cookie.
+|
+ */
+
+session_start();
+
+/*
+|--------------------------------------------------------------------------
+| Require dbconf/settings.php
+|--------------------------------------------------------------------------
+|
+| include file
+| dbconf/settings.php
+| for connect to database
+|
+ */
+
+require dirname(__FILE__) . "/settings.php";
 
 // Define variables and initialize with empty values
-global $fName;
-global $lName;
-global $customerName;
-global $phoneNumber;
-global $unitNumber;
-global $streetNumber;
-global $streetName;
-global $suburb;
-global $destinationSuburb;
-global $pickUpDate;
-global $pickUpTime;
-
-global $fName_err;
-global $lName_err;
-global $phoneNumber_err;
-global $unitNumber_err;
-global $streetNumber_err;
-global $streetName_err;
-global $suburb_err;
-global $destinationSuburb_err;
-
 $fName
-    = $lName
-    = $unitNumber
-    = $phoneNumber
-    = $streetNumber
-    = $streetName
-    = $suburb
-    = $destinationSuburb
-    = $cars = "";
+= $lName
+= $unitNumber
+= $phoneNumber
+= $streetNumber
+= $streetName
+= $suburb
+= $destinationSuburb
+= $cars = "";
 
 $fName_err
-    = $lName_err
-    = $phoneNumber_err
-    = $unitNumber_err
-    = $streetNumber_err
-    = $streetName_err
-    = $suburb_err
-    = $destinationSuburb_err = "";
+= $lName_err
+= $phoneNumber_err
+= $unitNumber_err
+= $streetNumber_err
+= $streetName_err
+= $suburb_err
+= $destinationSuburb_err = "";
 
-// Include config file
-// require_once("dbconf/settings.php");
-require_once(dirname(__FILE__) . "/settings.php");
-
+// Set Default Time Zone
 date_default_timezone_set('Pacific/Auckland');
 
 // Processing form data when form is submitted
@@ -111,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $suburb = trim($_POST["sbname"]);
     }
-
+    
     // Validate destinationSuburb
     if (empty(trim($_POST["dsbname"]))) {
         $destinationSuburb_err = "Please enter a valid Destination Suburb.";
@@ -132,6 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Generate a Unique reference number the first three characters are upper case “BRN”, then the rest five character are digits.
         $digits = 5;
         $referenceNumber = 'BRN' . str_pad(rand(0, pow(10, $digits) - 1), $digits, '0', STR_PAD_LEFT);
+        $driver_name = $_SESSION["username"];
 
         $sql_table = "passengers";
 
@@ -144,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pickUpDate = date('Y-m-d', strtotime($pickUpDate));
         $pickUpTime = date('H:i:s', strtotime($pickUpTime));
 
-        // Date Validation 
+        // Date Validation
         $date1 = $pickUpDate;
         $date2 = date("Y-m-d");
 
@@ -172,14 +171,13 @@ VALUES
 ";
 
                 if ($conn->query($sql) === true) {
-                    sweetAlertMsg("Thank you for your booking!", "Booking reference number: $referenceNumber \\nPickup time: $pickUpTime \\nPickup date: $pickUpDate", "success", "Aww yiss!");
+                    echo "Booking request '" . $referenceNumber . "' has been assigned! For '" . $driver_name . "'";
                 } else {
-                    sweetAlertMsg("Oh No...", "Error Occurred = $conn->error", "error", "OK");
+                    echo "Error Occurred = $conn->error";
                 }
             } else {
-                sweetAlertMsg("Oh No...", "Error Occurred, please recheck your pick-up TIME", "error", "OK");
+                echo "Error Occurred, please recheck your pick-up TIME";
             }
-
 
             // If the date is NOT the same as today, NO NEED to check for PICK-UP TIME
         } else if ($date1 > $date2) {
@@ -199,14 +197,13 @@ VALUES
 ";
 
             if ($conn->query($sql) === true) {
-                sweetAlertMsg("Thank you for your booking!", "Booking reference number: $referenceNumber \\nPickup time: $pickUpTime \\nPickup date: $pickUpDate", "success", "Aww yiss!");
+                echo "Booking request '" . $referenceNumber . "' has been assigned! For '" . $driver_name . "'";
             } else {
-                sweetAlertMsg("Oh No...", "Error Occurred = $conn->error", "error", "OK");
+                echo "Error Occurred = $conn->error";
             }
-
             // else, date is too early
         } else {
-            sweetAlertMsg("Oh No...", "Error Occurred, please recheck your pick-up DATE", "error", "OK");
+            echo "Error Occurred, please recheck your pick-up DATE";
         }
     } else {
         sweetAlertMsg("Going Somewhere?", "We Just Need A Little Bit More Info For Our Riders", "info", "OK");
@@ -218,22 +215,22 @@ VALUES
 
 /**
  * sweetAlertMsg
- * 
+ *
  * @param string   $title   The title of the popup, as HTML.
  * @param string   $text    A description for the popup. If text and html parameters are provided in the same time, html will be used.
  * @param string   $icon    The icon of the popup. SweetAlert2 comes with 5 built-in icon which will show a corresponding icon animation: warning, error, success, info, and question.
  * @param string   $btn    Button Text.
- * 
- * 
+ *
+ *
  * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
  */
 function sweetAlertMsg($title, $text, $icon, $btn)
 {
     echo '
     <script type="text/javascript">
-    
+
     $(document).ready(function(){
-    
+
         swal({
             html: true,
             title: "' . $title . '",
@@ -242,41 +239,18 @@ function sweetAlertMsg($title, $text, $icon, $btn)
             button: "' . $btn . '",
         })
           });
-    
+
     </script>
     ';
 }
 
 /**
- * sweetAlertMsgReturn
- * 
- * @param string   $title   The title of the popup, as HTML.
- * @param string   $text    A description for the popup. If text and html parameters are provided in the same time, html will be used.
- * @param string   $icon    The icon of the popup. SweetAlert2 comes with 5 built-in icon which will show a corresponding icon animation: warning, error, success, info, and question.
- * @param string   $btn    Button Text.
- * @param string   $return  Window Location href
- *  
- * 
- * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
+ * Check for unique reference number in database.
+ * using the input '$referenceNumber'
+ * as key and search across database.
  */
-function sweetAlertMsgReturn($title, $text, $icon, $btn, $return)
+function uniqueRefCheck($conn, $sql_table, $referenceNumber)
 {
-    echo '
-    <script type="text/javascript">
-    
-    $(document).ready(function(){
-    
-        swal({
-            html: true,
-            title: "' . $title . '",
-            text: "' . $text . '",
-            icon: "' . $icon . '",
-            button: "' . $btn . '",
-        }).then(function() {
-            window.location.href = "' . $return . '";
-        })
-          });
-    
-    </script>
-    ';
+    $searchQuery = "SELECT * FROM $sql_table WHERE bookingRefNo = '$referenceNumber'";
+    return mysqli_query($conn, $searchQuery)->num_rows === 0;
 }

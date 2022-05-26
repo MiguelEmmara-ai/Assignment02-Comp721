@@ -88,6 +88,7 @@ require dirname(__FILE__) . "/includes/backend/appFunction.php";
  */
 
 require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
+require dirname(__FILE__) . "/includes/backend/password.php";
 
 /*
 |--------------------------------------------------------------------------
@@ -176,8 +177,9 @@ require "includes/frontend/nav.php";
                                             <i class="far fa-paper-plane"></i> ASSIGN
                                         </button>
 
-                                        <a class="btn btn-primary mx-1 mb-2" role="button" name="sbutton" id="sbutton" onclick="searchPassengers(booking.value)">
+                                        <a class="btn btn-primary flex-fill py-2 mb-2" role="button" name="sbutton" id="sbutton" onclick="searchPassengers(booking.value)">
                                         <i class="fas fa-search"></i></i> Search </a>
+
                                     </div>
                                 </div>
                             </form>

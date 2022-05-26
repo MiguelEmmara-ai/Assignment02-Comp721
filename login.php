@@ -89,6 +89,19 @@ require dirname(__FILE__) . "/includes/backend/appFunction.php";
  */
 
 require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
+require dirname(__FILE__) . "/includes/backend/password.php";
+
+/*
+|--------------------------------------------------------------------------
+| createTableIfDriversNotExist()
+|--------------------------------------------------------------------------
+|
+| This Function Will
+| create Table Drivers
+| If NotExist
+|
+ */
+createTableIfDriversNotExist();
 
 /*
 |--------------------------------------------------------------------------
