@@ -88,6 +88,7 @@ require dirname(__FILE__) . "/includes/backend/appFunction.php";
  */
 
 require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
+require dirname(__FILE__) . "/includes/backend/password.php";
 
 /*
 |--------------------------------------------------------------------------
