@@ -88,6 +88,18 @@ require dirname(__FILE__) . "/includes/backend/appFunction.php";
  */
 
 require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
+
+/*
+|--------------------------------------------------------------------------
+| Require backend/password
+|--------------------------------------------------------------------------
+|
+| include file backend/password
+| Since aut server use older version of php 5.4, I need https://github.com/ircmaxell/password_compat
+| to use password functions supported in latest version of php
+|
+ */
+
 require dirname(__FILE__) . "/includes/backend/password.php";
 
 /*
