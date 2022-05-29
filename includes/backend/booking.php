@@ -76,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $phoneNumber_err = "Please enter a valid phone number. (eg. 0221234567)";
     }
 
+    // Validate Unit Number (Optional)
     if (isset($_POST["unumber"])) {
         $unitNumber = $_POST["unumber"];
     } else if (!isset($_POST["unumber"])) {
