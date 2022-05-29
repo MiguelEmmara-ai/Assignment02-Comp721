@@ -53,24 +53,26 @@ date_default_timezone_set('Pacific/Auckland');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate fName
-    if (empty(trim($_POST["fName"]))) {
+    $fNameTrimmed = trim($_POST["fName"]);
+    if (empty($fNameTrimmed)) {
         $fName_err = "Please enter a First Name.";
     } else {
         $fName = trim($_POST["fName"]);
     }
 
     // Validate lName
-    if (empty(trim($_POST["lName"]))) {
+    $lNameTrimmed = trim($_POST["lName"]);
+    if (empty($lNameTrimmed)) {
         $lName_err = "Please enter a Last Name.";
     } else {
         $lName = trim($_POST["lName"]);
     }
 
     // Validate phoneNumber
-    $phoneNumber = $_POST['phone'];
-    if (empty(trim($_POST['phone']))) {
+    $phoneNumberTrimmed = trim($_POST["phone"]);
+    if (empty($phoneNumberTrimmed)) {
         $phoneNumber_err = "Please enter a valid phone number.";
-    } else if (is_numeric($phoneNumber)) {
+    } else if (is_numeric($phoneNumberTrimmed)) {
         $phoneNumber = $_POST['phone'];
     } else {
         $phoneNumber_err = "Please enter a valid phone number. (eg. 0221234567)";
@@ -80,10 +82,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["unumber"])) {
         $unitNumber = $_POST["unumber"];
     } else if (!isset($_POST["unumber"])) {
-        $unitNumber = $_POST['unumber'];
-        if (empty(trim($_POST['unumber']))) {
-            $unitNumber = $_POST['unumber'];
-        } else if (is_numeric($unitNumber)) {
+        $unitNumberTrimmed = trim($_POST["unumber"]);
+        if (empty($unitNumberTrimmed)) {
+            $unitNumber_err = "Please enter a valid Unit Number";
+        } else if (is_numeric($unitNumberTrimmed)) {
             $unitNumber = $_POST['unumber'];
         } else {
             $unitNumber_err = "Please enter a valid Unit Number (eg. 143)";
@@ -91,17 +93,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Validate streetNumber
-    $streetNumber = $_POST['snumber'];
-    if (empty(trim($_POST['snumber']))) {
+    $streetNumberTrimmed = trim($_POST["snumber"]);
+    if (empty($streetNumberTrimmed)) {
         $streetNumber_err = "Please enter a valid Street Number";
-    } else if (is_numeric($streetNumber)) {
+    } else if (is_numeric($streetNumberTrimmed)) {
         $streetNumber = $_POST['snumber'];
     } else {
         $streetNumber_err = "Please enter a valid Street Number (eg. 61)";
     }
 
     // Validate streetName
-    if (empty(trim($_POST["stname"]))) {
+    $streetNameTrimmed = trim($_POST["stname"]);
+    if (empty($streetNameTrimmed)) {
         $streetName_err = "Please enter a valid Street Name.";
     } else {
         $streetName = trim($_POST["stname"]);
