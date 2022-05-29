@@ -25,7 +25,7 @@ if (!defined('MY_CONSTANT')) {
                 <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="about.php">about</a></li>
                 <li class="nav-item"><a class="nav-link" href="index.php#about">services</a></li>
-                <li class="nav-item" style="margin-top: 10px;"><a class="btn btn-primary" role="button" style="background: rgba(10,9,8,0.27);" href="booking.php">Book A Ride</a></li>
+                <li class="nav-item" style="margin-top: 10px;"><a class="btn btn-primary" role="button" style="background: rgba(10,9,8,0.27);" href="booking.html">Book A Ride</a></li>
                 <li class="nav-item" style="margin-top: 10px;"><a class="btn btn-primary btn-book" role="button" href="register.php">Become A Driver</a></li>
                 <li class="nav-item" style="margin-top: 10px;"><a class="btn btn-primary btn-login" role="button" href="login.php" style="background: rgb(99,168,231);">Login</a></li>
             </ul>

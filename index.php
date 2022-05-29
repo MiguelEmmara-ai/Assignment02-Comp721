@@ -81,7 +81,7 @@ require 'includes/frontend/nav.php';
                     <h1 data-aos="zoom-in" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" style="color: #3b3b3b;font-weight: bold;"><strong>CHEAP &amp; TRUSTED</strong><br><strong>TAXI COMPANY</strong><br></h1>
                     <p data-aos="zoom-in" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" style="color: #3b3b3b;font-weight: bold;"><strong><em>Enjoy Your Comfortable Trip With Us!</em></strong><br></p>
                     <a class="btn btn-light btn-lg action-button" role="button" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="1000" data-aos-once="true" href="index.php#about" style="background: #f6b800;">Learn More</a>
-                    <a class="btn btn-dark btn-lg" role="button" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="1000" data-aos-once="true" href="booking.php" style="border-radius: 40px;">Book A Ride</a>
+                    <a class="btn btn-dark btn-lg" role="button" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="1000" data-aos-once="true" href="booking.html" style="border-radius: 40px;">Book A Ride</a>
                     <div class="container mt-3">
                         <img data-aos="zoom-in-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="img-fluid max-width: 70% taxi-image" src="assets/img/taxi-header.png" width="304" height="236">
                     </div>
@@ -227,7 +227,7 @@ require 'includes/frontend/nav.php';
                             <h2>About us</h2>
                         </div>
                         <p style="color: rgb(0,0,0);"><strong><em>Trusted Cab Services in All World</em></strong><br></p>
-                        <p>Cabs Online, The go-getters. We are a tech company that connects the physical and digital worlds to help make movement happen at the tap of a button. Because we believe in a world where movement should be accessible. So you can move and earn safely. In a way that’s sustainable for our planet. At Cabs Online, the pursuit of reimagination is never finished, never stops, and is always just beginning.</p><a class="btn btn-primary" role="button" href="booking.php" style="margin-left: -4px;background: rgb(59,59,59);">Book A RIDE</a>
+                        <p>Cabs Online, The go-getters. We are a tech company that connects the physical and digital worlds to help make movement happen at the tap of a button. Because we believe in a world where movement should be accessible. So you can move and earn safely. In a way that’s sustainable for our planet. At Cabs Online, the pursuit of reimagination is never finished, never stops, and is always just beginning.</p><a class="btn btn-primary" role="button" href="booking.html" style="margin-left: -4px;background: rgb(59,59,59);">Book A RIDE</a>
                     </div><!-- End: Intro -->
                 </div>
                 <div class="col-sm-4">
