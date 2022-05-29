@@ -91,6 +91,19 @@ require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
 
 /*
 |--------------------------------------------------------------------------
+| Require backend/password
+|--------------------------------------------------------------------------
+|
+| include file backend/password
+| Since aut server use older version of php 5.4, I need https://github.com/ircmaxell/password_compat
+| to use password functions supported in latest version of php
+|
+ */
+
+require dirname(__FILE__) . "/includes/backend/password.php";
+
+/*
+|--------------------------------------------------------------------------
 | checkUserLoggedIn()
 |--------------------------------------------------------------------------
 |
@@ -105,7 +118,7 @@ checkUserLoggedIn();
 // When The Assign OR Search is clicked,
 // we take the variable booking and check
 // if whether or not it is empty before we pass it to the method
-if (isset($_POST['booking'])) {
+if (isset($_POST['bsearch'])) {
 
     /*
     |--------------------------------------------------------------------------
@@ -118,7 +131,7 @@ if (isset($_POST['booking'])) {
     |
      */
 
-    assignBookingManual($_POST['booking']);
+    assignBookingManual($_POST['bsearch']);
 }
 
 ?>
@@ -168,7 +181,7 @@ require "includes/frontend/nav.php";
                             <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                                 <div class="row g-3 align-items-center">
                                     <div class="col-auto">
-                                        <input class="form-control mb-2" type="text" name="booking" id="booking" placeholder="Booking Number">
+                                        <input class="form-control mb-2" type="text" name="bsearch" id="bsearch" placeholder="Booking Number">
                                     </div>
 
                                     <div class="col-auto">
@@ -176,7 +189,7 @@ require "includes/frontend/nav.php";
                                             <i class="far fa-paper-plane"></i> ASSIGN
                                         </button>
 
-                                        <a class="btn btn-primary flex-fill py-2 mb-2" role="button" name="sbutton" id="sbutton" onclick="searchPassengers(booking.value)">
+                                        <a class="btn btn-primary flex-fill py-2 mb-2" role="button" name="sbutton" id="sbutton" onclick="searchPassengers(bsearch.value)">
                                         <i class="fas fa-search"></i></i> Search </a>
 
                                     </div>

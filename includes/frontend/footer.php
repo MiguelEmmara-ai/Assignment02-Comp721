@@ -26,7 +26,7 @@ if (!defined('MY_CONSTANT')) {
             <div class="col-sm-6 col-md-3 item">
                 <h3>Services</h3>
                 <ul>
-                    <li><a href="booking.php">Book A Ride</a></li>
+                    <li><a href="booking.html">Book A Ride</a></li>
                     <li><a href="register.php">Become A Driver</a></li>
                     <li><a href="login.php">Driver Login</a></li>
                     <li><a href="admin.php">Admin Page</a></li>

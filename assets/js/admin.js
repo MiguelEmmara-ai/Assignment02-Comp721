@@ -4,7 +4,7 @@
  */
 function showall() {
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("tableID").innerHTML = this.responseText;
         }
@@ -19,7 +19,7 @@ function showall() {
  */
 function showRecent() {
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("tableID").innerHTML = this.responseText;
         }
@@ -34,7 +34,7 @@ function showRecent() {
  */
 function showAvailPassengers() {
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("tableID").innerHTML = this.responseText;
         }
@@ -59,9 +59,18 @@ function searchPassengers(bookingRefNo) {
         return;
     }
 
+    if (!(/BRN\d{5}$/.test(bookingRefNo))) {
+        Swal.fire(
+            'Wrong Format',
+            'Sorry, the Booking Reference Number format is wrong',
+            'error'
+        )
+        return;
+    }
+
     xhttp = new XMLHttpRequest();
 
-    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("tableID").innerHTML = this.responseText;
         }
@@ -84,13 +93,13 @@ function updateAssignCab(bookingRefNo) {
 
     xhttp = new XMLHttpRequest();
 
-    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             Swal.fire(
                 'Congratulations!',
                 xhttp.responseText,
                 'success'
-            ).then(function() {
+            ).then(function () {
                 location.reload();
             });
         }

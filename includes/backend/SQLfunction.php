@@ -1,4 +1,5 @@
 <?php
+
 /*
 |--------------------------------------------------------------------------
 | Access Restriction
@@ -104,7 +105,7 @@ function createTableIfDriversNotExist()
             username VARCHAR(50) NOT NULL UNIQUE,
             password VARCHAR(255) NOT NULL,
             carsAvailability VARCHAR(200) NOT NULL,
-            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
           ) ENGINE = InnoDB DEFAULT CHARSET = latin1;";
 
         if ($conn->query($sql) === true) {
@@ -179,65 +180,70 @@ function addPassengers()
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Validate fName
-        if (empty(trim($_POST["fName"]))) {
+        $fNameTrimmed = trim($_POST["fName"]);
+        if (empty($fNameTrimmed)) {
             $fName_err = "Please enter a First Name.";
         } else {
             $fName = trim($_POST["fName"]);
         }
 
         // Validate lName
-        if (empty(trim($_POST["lName"]))) {
+        $lNameTrimmed = trim($_POST["lName"]);
+        if (empty($lNameTrimmed)) {
             $lName_err = "Please enter a Last Name.";
         } else {
             $lName = trim($_POST["lName"]);
         }
 
         // Validate phoneNumber
-        $phoneNumber = $_POST['phone'];
-        if (empty(trim($_POST['phone']))) {
+        $phoneNumberTrimmed = trim($_POST["phone"]);
+        if (empty($phoneNumberTrimmed)) {
             $phoneNumber_err = "Please enter a valid phone number.";
-        } else if (is_numeric($phoneNumber)) {
+        } else if (is_numeric($phoneNumberTrimmed)) {
             $phoneNumber = $_POST['phone'];
         } else {
             $phoneNumber_err = "Please enter a valid phone number. (eg. 0221234567)";
         }
 
         // Validate unitNumber
-        $unitNumber = $_POST['unumber'];
-        if (empty(trim($_POST['unumber']))) {
+        $unitNumberTrimmed = trim($_POST["unumber"]);
+        if (empty($unitNumberTrimmed)) {
             $unitNumber_err = "Please enter a valid Unit Number";
-        } else if (is_numeric($unitNumber)) {
+        } else if (is_numeric($unitNumberTrimmed)) {
             $unitNumber = $_POST['unumber'];
         } else {
             $unitNumber_err = "Please enter a valid Unit Number (eg. 143)";
         }
 
         // Validate streetNumber
-        $streetNumber = $_POST['snumber'];
-        if (empty(trim($_POST['snumber']))) {
+        $streetNumberTrimmed = trim($_POST["snumber"]);
+        if (empty($streetNumberTrimmed)) {
             $streetNumber_err = "Please enter a valid Street Number";
-        } else if (is_numeric($streetNumber)) {
+        } else if (is_numeric($streetNumberTrimmed)) {
             $streetNumber = $_POST['snumber'];
         } else {
             $streetNumber_err = "Please enter a valid Street Number (eg. 61)";
         }
 
         // Validate streetName
-        if (empty(trim($_POST["stname"]))) {
+        $streetNameTrimmed = trim($_POST["stname"]);
+        if (empty($streetNameTrimmed)) {
             $streetName_err = "Please enter a valid Street Name.";
         } else {
             $streetName = trim($_POST["stname"]);
         }
 
         // Validate suburb
-        if (empty(trim($_POST["sbname"]))) {
+        $suburbTrimmed = trim($_POST["sbname"]);
+        if (empty($suburbTrimmed)) {
             $suburb_err = "Please enter a valid Suburb.";
         } else {
             $suburb = trim($_POST["sbname"]);
         }
 
         // Validate destinationSuburb
-        if (empty(trim($_POST["dsbname"]))) {
+        $destinationSuburbTrimmed = trim($_POST["dsbname"]);
+        if (empty($destinationSuburbTrimmed)) {
             $destinationSuburb_err = "Please enter a valid Destination Suburb.";
         } else {
             $destinationSuburb = trim($_POST["dsbname"]);
@@ -358,14 +364,16 @@ function loginDrivers()
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Check if username is empty
-        if (empty(trim($_POST["username"]))) {
+        $usernameTrimmed = trim($_POST["username"]);
+        if (empty($usernameTrimmed)) {
             $username_err = "Please enter username.";
         } else {
             $username = trim($_POST["username"]);
         }
 
         // Check if password is empty
-        if (empty(trim($_POST["password"]))) {
+        $passwordTrimmed = trim($_POST["password"]);
+        if (empty($passwordTrimmed)) {
             $password_err = "Please enter your password.";
         } else {
             $password = trim($_POST["password"]);
@@ -454,7 +462,8 @@ function registerDrivers()
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Validate username
-        if (empty(trim($_POST["username"]))) {
+        $usernameTrimmed = trim($_POST["username"]);
+        if (empty( $usernameTrimmed)) {
             $username_err = "Please enter a username.";
         } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))) {
             $username_err = "Username can only contain letters, numbers, and underscores.";
@@ -489,18 +498,20 @@ function registerDrivers()
             }
         }
 
-        // Validate email
-        $email = trim($_POST["email"]);
-        if (empty(trim($_POST["email"]))) {
-            $email_err = "Please enter a valid email.";
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $email_err = "Invalid email format";
-        } else {
-            $email = trim($_POST["email"]);
-        }
+        /// I Commented this code because this code doesn't work on older version of php that aut server use
+        // // Validate email
+        // $emailTrimmed = trim($_POST["email"]);
+        // if (empty($emailTrimmed)) {
+        //     $email_err = "Please enter a valid email.";
+        // } elseif (!filter_var($email, FILTER_SANITIZE_EMAIL)) {
+        //     $email_err = "Invalid email format";
+        // } else {
+        //     $email = trim($_POST["email"]);
+        // }
 
         // Validate password
-        if (empty(trim($_POST["password"]))) {
+        $passwordTrimmed = trim($_POST["email"]);
+        if (empty($passwordTrimmed)) {
             $password_err = "Please enter a password.";
         } elseif (strlen(trim($_POST["password"])) < 6) {
             $password_err = "Password must have at least 6 characters.";
@@ -509,7 +520,8 @@ function registerDrivers()
         }
 
         // Validate confirm password
-        if (empty(trim($_POST["confirm_password"]))) {
+        $passwordTrimmed = trim($_POST["confirm_password"]);
+        if (empty($passwordTrimmed)) {
             $confirm_password_err = "Please confirm password.";
         } else {
             $confirm_password = trim($_POST["confirm_password"]);
@@ -575,7 +587,7 @@ function assignBookingManual($bookingRefNo)
     require "includes/dbconf/settings.php";
 
     // Check if bookingRefNo input by user in the text box
-    if (isset($_POST["booking"]) && !empty($_POST["booking"])) {
+    if (isset($_POST["bsearch"]) && !empty($_POST["bsearch"])) {
         $driver_name = $_SESSION["username"];
         $update = "UPDATE passengers SET status = 'Assigned',  assignedBy = '" . $driver_name . "' WHERE bookingRefNo = '" . $bookingRefNo . "'";
 

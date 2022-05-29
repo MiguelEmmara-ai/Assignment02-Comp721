@@ -30,12 +30,20 @@ if (isset($_POST['submit'])) {
         $msg = mysqli_connect_error();
     } else {
         copy("includes/dbconf/settings.inc.config.php", "includes/dbconf/settings.php");
+        
+        $file1 = "includes/dbconf/settings.php";
+        file_put_contents($file1, str_replace("db_host", $host, file_get_contents($file1)));
+        file_put_contents($file1, str_replace("db_username", $user, file_get_contents($file1)));
+        file_put_contents($file1, str_replace("db_password", $pswd, file_get_contents($file1)));
+        file_put_contents($file1, str_replace("db_name", $dbnm, file_get_contents($file1)));
+
         copy("includes/dbconf/settings.inc.config.php", "includes/backend/settings.php");
-        $file = "includes/dbconf/settings.php";
-        file_put_contents($file, str_replace("db_host", $host, file_get_contents($file)));
-        file_put_contents($file, str_replace("db_username", $user, file_get_contents($file)));
-        file_put_contents($file, str_replace("db_password", $pswd, file_get_contents($file)));
-        file_put_contents($file, str_replace("db_name", $dbnm, file_get_contents($file)));
+        $file2 = "includes/backend/settings.php";
+        file_put_contents($file2, str_replace("db_host", $host, file_get_contents($file2)));
+        file_put_contents($file2, str_replace("db_username", $user, file_get_contents($file2)));
+        file_put_contents($file2, str_replace("db_password", $pswd, file_get_contents($file2)));
+        file_put_contents($file2, str_replace("db_name", $dbnm, file_get_contents($file2)));
+
 
         header('location:index.php');
     }
