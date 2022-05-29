@@ -76,10 +76,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $phoneNumber_err = "Please enter a valid phone number. (eg. 0221234567)";
     }
 
-    // Validate unitNumber
+    // Validate unitNumber (Optional)
     $unitNumber = $_POST['unumber'];
     if (empty(trim($_POST['unumber']))) {
-        $unitNumber_err = "Please enter a valid Unit Number";
+        $unitNumber = $_POST['unumber'];
     } else if (is_numeric($unitNumber)) {
         $unitNumber = $_POST['unumber'];
     } else {
@@ -103,16 +103,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $streetName = trim($_POST["stname"]);
     }
 
-    // Validate suburb
+    // Validate suburb (Optional)
     if (empty(trim($_POST["sbname"]))) {
-        $suburb_err = "Please enter a valid Suburb.";
+        $suburb = trim($_POST["sbname"]);
     } else {
         $suburb = trim($_POST["sbname"]);
     }
     
-    // Validate destinationSuburb
+    // Validate destinationSuburb (Optional)
     if (empty(trim($_POST["dsbname"]))) {
-        $destinationSuburb_err = "Please enter a valid Destination Suburb.";
+        $destinationSuburb = trim($_POST["dsbname"]);
     } else {
         $destinationSuburb = trim($_POST["dsbname"]);
     }

@@ -51,10 +51,10 @@ function addBooking() {
         }
 
         // validate number inputs
-        if (!/^[0-9]+$/.test(phone) || !/^[0-9]+$/.test(unumber) || !/^[0-9]+$/.test(snumber)) {
+        if (!/^[0-9]+$/.test(phone) || !/^[0-9]+$/.test(snumber)) {
             Swal.fire(
                 'Oopss...',
-                'Please only enter numeric characters only for Contact Phone! (Allowed input:0-9)',
+                'Please only enter numeric characters only for Contact Phone and Street Number! (Allowed input:0-9)',
                 'error'
               )
             validated = false;
