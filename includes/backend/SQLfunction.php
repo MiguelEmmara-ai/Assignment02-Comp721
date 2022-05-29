@@ -153,23 +153,23 @@ function addPassengers()
     global $destinationSuburb_err;
 
     $fName
-    = $lName
-    = $unitNumber
-    = $phoneNumber
-    = $streetNumber
-    = $streetName
-    = $suburb
-    = $destinationSuburb
-    = $cars = "";
+        = $lName
+        = $unitNumber
+        = $phoneNumber
+        = $streetNumber
+        = $streetName
+        = $suburb
+        = $destinationSuburb
+        = $cars = "";
 
     $fName_err
-    = $lName_err
-    = $phoneNumber_err
-    = $unitNumber_err
-    = $streetNumber_err
-    = $streetName_err
-    = $suburb_err
-    = $destinationSuburb_err = "";
+        = $lName_err
+        = $phoneNumber_err
+        = $unitNumber_err
+        = $streetNumber_err
+        = $streetName_err
+        = $suburb_err
+        = $destinationSuburb_err = "";
 
     // Include config file
     require "includes/dbconf/settings.php";
@@ -205,14 +205,18 @@ function addPassengers()
             $phoneNumber_err = "Please enter a valid phone number. (eg. 0221234567)";
         }
 
-        // Validate unitNumber
-        $unitNumberTrimmed = trim($_POST["unumber"]);
-        if (empty($unitNumberTrimmed)) {
-            $unitNumber_err = "Please enter a valid Unit Number";
-        } else if (is_numeric($unitNumberTrimmed)) {
-            $unitNumber = $_POST['unumber'];
-        } else {
-            $unitNumber_err = "Please enter a valid Unit Number (eg. 143)";
+        // Validate Unit Number (Optional)
+        if (isset($_POST["unumber"])) {
+            $unitNumber = $_POST["unumber"];
+        } else if (!isset($_POST["unumber"])) {
+            $unitNumberTrimmed = trim($_POST["unumber"]);
+            if (empty($unitNumberTrimmed)) {
+                $unitNumber_err = "Please enter a valid Unit Number";
+            } else if (is_numeric($unitNumberTrimmed)) {
+                $unitNumber = $_POST['unumber'];
+            } else {
+                $unitNumber_err = "Please enter a valid Unit Number (eg. 143)";
+            }
         }
 
         // Validate streetNumber
@@ -233,20 +237,14 @@ function addPassengers()
             $streetName = trim($_POST["stname"]);
         }
 
-        // Validate suburb
-        $suburbTrimmed = trim($_POST["sbname"]);
-        if (empty($suburbTrimmed)) {
-            $suburb_err = "Please enter a valid Suburb.";
-        } else {
-            $suburb = trim($_POST["sbname"]);
+        // Validate suburb (Optional)
+        if (isset($_POST["sbname"])) {
+            $suburb = $_POST["sbname"];
         }
 
-        // Validate destinationSuburb
-        $destinationSuburbTrimmed = trim($_POST["dsbname"]);
-        if (empty($destinationSuburbTrimmed)) {
-            $destinationSuburb_err = "Please enter a valid Destination Suburb.";
-        } else {
-            $destinationSuburb = trim($_POST["dsbname"]);
+        // Validate destinationSuburb (Optional)
+        if (isset($_POST["dsbname"])) {
+            $destinationSuburb = $_POST["dsbname"];
         }
 
         // Check input errors before inserting in database
@@ -356,10 +354,6 @@ function loginDrivers()
     // Include config file
     require "includes/dbconf/settings.php";
 
-    // // Define variables and initialize with empty values
-    // $username = $password = "";
-    // $username_err = $password_err = $login_err = "";
-
     // Processing form data when form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -463,7 +457,7 @@ function registerDrivers()
 
         // Validate username
         $usernameTrimmed = trim($_POST["username"]);
-        if (empty( $usernameTrimmed)) {
+        if (empty($usernameTrimmed)) {
             $username_err = "Please enter a username.";
         } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))) {
             $username_err = "Username can only contain letters, numbers, and underscores.";
@@ -498,7 +492,7 @@ function registerDrivers()
             }
         }
 
-        /// I Commented this code because this code doesn't work on older version of php that aut server use
+        /// I Commented this code because this code doesn't work on older version of php that AUT server use
         // // Validate email
         // $emailTrimmed = trim($_POST["email"]);
         // if (empty($emailTrimmed)) {
