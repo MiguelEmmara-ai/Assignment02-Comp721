@@ -28,23 +28,23 @@ require dirname(__FILE__) . "/settings.php";
 
 // Define variables and initialize with empty values
 $fName
-= $lName
-= $unitNumber
-= $phoneNumber
-= $streetNumber
-= $streetName
-= $suburb
-= $destinationSuburb
-= $cars = "";
+    = $lName
+    = $unitNumber
+    = $phoneNumber
+    = $streetNumber
+    = $streetName
+    = $suburb
+    = $destinationSuburb
+    = $cars = "";
 
 $fName_err
-= $lName_err
-= $phoneNumber_err
-= $unitNumber_err
-= $streetNumber_err
-= $streetName_err
-= $suburb_err
-= $destinationSuburb_err = "";
+    = $lName_err
+    = $phoneNumber_err
+    = $unitNumber_err
+    = $streetNumber_err
+    = $streetName_err
+    = $suburb_err
+    = $destinationSuburb_err = "";
 
 // Set Default Time Zone
 date_default_timezone_set('Pacific/Auckland');
@@ -76,14 +76,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $phoneNumber_err = "Please enter a valid phone number. (eg. 0221234567)";
     }
 
-    // Validate unitNumber (Optional)
-    $unitNumber = $_POST['unumber'];
-    if (empty(trim($_POST['unumber']))) {
+    if (isset($_POST["unumber"])) {
+        $unitNumber = $_POST["unumber"];
+    } else if (!isset($_POST["unumber"])) {
         $unitNumber = $_POST['unumber'];
-    } else if (is_numeric($unitNumber)) {
-        $unitNumber = $_POST['unumber'];
-    } else {
-        $unitNumber_err = "Please enter a valid Unit Number (eg. 143)";
+        if (empty(trim($_POST['unumber']))) {
+            $unitNumber = $_POST['unumber'];
+        } else if (is_numeric($unitNumber)) {
+            $unitNumber = $_POST['unumber'];
+        } else {
+            $unitNumber_err = "Please enter a valid Unit Number (eg. 143)";
+        }
     }
 
     // Validate streetNumber
@@ -104,17 +107,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Validate suburb (Optional)
-    if (empty(trim($_POST["sbname"]))) {
-        $suburb = trim($_POST["sbname"]);
-    } else {
-        $suburb = trim($_POST["sbname"]);
+    if (isset($_POST["sbname"])) {
+        $suburb = $_POST["sbname"];
     }
-    
+
     // Validate destinationSuburb (Optional)
-    if (empty(trim($_POST["dsbname"]))) {
-        $destinationSuburb = trim($_POST["dsbname"]);
-    } else {
-        $destinationSuburb = trim($_POST["dsbname"]);
+    if (isset($_POST["dsbname"])) {
+        $destinationSuburb = $_POST["dsbname"];
     }
 
     // Check input errors before inserting in database
@@ -171,7 +170,7 @@ VALUES
 ";
 
                 if ($conn->query($sql) === true) {
-                    echo "Booking request '" . $referenceNumber . "' has been assigned! For '" . $driver_name . "'";
+                    echo "Booking reference number: $referenceNumber <br> Pickup time: $pickUpTime <br> Pickup date: $pickUpDate";
                 } else {
                     echo "Error Occurred = $conn->error";
                 }
