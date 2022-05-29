@@ -30,3 +30,26 @@ CREATE TABLE IF NOT EXISTS passengers(
         carsNeed ENUM('Scooter','Hatchback','Suv','Sedan','Van') NOT NULL,
         assignedBy TEXT NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+    # Additional queries #
+
+        $searchQuery = "SELECT * FROM $sql_table WHERE bookingRefNo = '$referenceNumber'";
+    return mysqli_query($conn, $searchQuery)->num_rows === 0;
+
+        $query = "SELECT * FROM passengers";
+        $query = "SELECT * FROM drivers";
+
+        $query = "SELECT * FROM passengers WHERE status = 'Unassigned'";
+
+        $query = "SELECT * FROM passengers WHERE CONCAT(pickupDate, ' ', pickupTime) BETWEEN NOW() AND NOW() + INTERVAL 2 HOUR";
+
+        $query = "SELECT * FROM passengers WHERE bookingRefNo = '$bookingRefNo'";
+
+        $query = "SELECT * FROM passengers WHERE bookingRefNo = '$bookingRefNo'";
+
+        $query = "SELECT * FROM passengers WHERE bookingRefNo = '$bookingRefNo' AND status = 'Unassigned'";
+
+    # Prepared Statments #
+
+        $sql = "SELECT id, username, password FROM drivers WHERE username = ?";
+        $sql = "SELECT id FROM drivers WHERE username = ?";

@@ -50,58 +50,65 @@ function addBooking() {
             validated = true;
         }
 
-        // validate number input
-        if (!/^[0-9]+$/.test(phone) && !/^[0-9]+$/.test(phone) && !/^[0-9]+$/.test(phone) && !/^[0-9]+$/.test(phone)) {
-            alert("Please only enter numeric characters only! (Allowed input:0-9)")
-            validated = false;
-            return false;
-        }
-
+        // If time and date are correct
         if (validated) {
+            // validate number inputs
+            if (!/^[0-9]+$/.test(phone) || !/^[0-9]+$/.test(snumber)) {
+                Swal.fire({
+                    title: 'Oopss...',
+                    icon: 'error',
+                    html: 'Please only enter numeric characters only for <b>Contact Phone</b> and <b>Street Number</b>! (Allowed input:0-9)',
+                })
 
-            // encodeURIComponent(bookingDate)
-            var url = "includes/backend/booking.php";
-            var params = "customerName=" + customerName +
-                "&fName=" + encodeURIComponent(fName) +
-                "&lName=" + encodeURIComponent(lName) +
-                "&bookingDate=" + encodeURIComponent(bookingDate) +
-                "&bookingTime=" + encodeURIComponent(bookingTime) +
-                "&phone=" + encodeURIComponent(phone) +
-                "&unumber=" + encodeURIComponent(unumber) +
-                "&snumber=" + encodeURIComponent(snumber) +
-                "&stname=" + encodeURIComponent(stname) +
-                "&sbname=" + encodeURIComponent(sbname) +
-                "&dsbname=" + encodeURIComponent(dsbname) +
-                "&pickUpDate=" + encodeURIComponent(pickUpDate) +
-                "&pickUpTime=" + encodeURIComponent(pickUpTime) +
-                "&inlineRadioOptions=" + encodeURIComponent(inlineRadioOptions);
+                validated = false;
+            } else {
+                // if number inputs are corect
+                if (validated) {
+                    // encodeURIComponent(bookingDate)
+                    var url = "includes/backend/booking.php";
+                    var params = "customerName=" + customerName +
+                        "&fName=" + encodeURIComponent(fName) +
+                        "&lName=" + encodeURIComponent(lName) +
+                        "&bookingDate=" + encodeURIComponent(bookingDate) +
+                        "&bookingTime=" + encodeURIComponent(bookingTime) +
+                        "&phone=" + encodeURIComponent(phone) +
+                        "&unumber=" + encodeURIComponent(unumber) +
+                        "&snumber=" + encodeURIComponent(snumber) +
+                        "&stname=" + encodeURIComponent(stname) +
+                        "&sbname=" + encodeURIComponent(sbname) +
+                        "&dsbname=" + encodeURIComponent(dsbname) +
+                        "&pickUpDate=" + encodeURIComponent(pickUpDate) +
+                        "&pickUpTime=" + encodeURIComponent(pickUpTime) +
+                        "&inlineRadioOptions=" + encodeURIComponent(inlineRadioOptions);
 
-            xhr.open("POST", url, true);
+                    xhr.open("POST", url, true);
 
-            // Send the proper header information along with the request
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() { // Call a function when the state changes.
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    Swal.fire(
-                        'Congratulations!',
-                        xhr.responseText,
-                        'success'
-                    ).then(function() {
-                        location.reload();
+                    // Send the proper header information along with the request
+                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhr.onreadystatechange = function () { // Call a function when the state changes.
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            Swal.fire(
+                                'Thank you for your booking!',
+                                xhr.responseText,
+                                'success'
+                            ).then(function () {
+                                location.reload();
+                            });
+                        }
+                    }
+                    xhr.send(params);
+
+                } else {
+                    $(document).ready(function () {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something is wrong buddy',
+                            footer: 'Make Sure Fill  All The Required Data Or Try Again Later'
+                        })
                     });
                 }
             }
-            xhr.send(params);
-
-        } else {
-            $(document).ready(function() {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something is wrong buddy',
-                    footer: 'Make Sure Fill  All The Required Data Or Try Again Later'
-                })
-            });
         }
     } else {
         Swal.fire({
@@ -119,7 +126,7 @@ function addBooking() {
  */
 function validateDate(date, todaysdate) {
     if (date < todaysdate) {
-        $(document).ready(function() {
+        $(document).ready(function () {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -137,7 +144,7 @@ function validateDate(date, todaysdate) {
  */
 function validateTime(inputTime, currentTime) {
     if (inputTime < currentTime) {
-        $(document).ready(function() {
+        $(document).ready(function () {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
