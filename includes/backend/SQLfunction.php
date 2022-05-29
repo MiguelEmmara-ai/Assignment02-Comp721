@@ -209,10 +209,10 @@ function addPassengers()
         if (isset($_POST["unumber"])) {
             $unitNumber = $_POST["unumber"];
         } else if (!isset($_POST["unumber"])) {
-            $unitNumber = $_POST['unumber'];
-            if (empty(trim($_POST['unumber']))) {
-                $unitNumber = $_POST['unumber'];
-            } else if (is_numeric($unitNumber)) {
+            $unitNumberTrimmed = trim($_POST["unumber"]);
+            if (empty($unitNumberTrimmed)) {
+                $unitNumber_err = "Please enter a valid Unit Number";
+            } else if (is_numeric($unitNumberTrimmed)) {
                 $unitNumber = $_POST['unumber'];
             } else {
                 $unitNumber_err = "Please enter a valid Unit Number (eg. 143)";
@@ -354,10 +354,6 @@ function loginDrivers()
     // Include config file
     require "includes/dbconf/settings.php";
 
-    // // Define variables and initialize with empty values
-    // $username = $password = "";
-    // $username_err = $password_err = $login_err = "";
-
     // Processing form data when form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -496,7 +492,7 @@ function registerDrivers()
             }
         }
 
-        /// I Commented this code because this code doesn't work on older version of php that aut server use
+        /// I Commented this code because this code doesn't work on older version of php that AUT server use
         // // Validate email
         // $emailTrimmed = trim($_POST["email"]);
         // if (empty($emailTrimmed)) {
