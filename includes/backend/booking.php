@@ -197,7 +197,7 @@ VALUES
 ";
 
             if ($conn->query($sql) === true) {
-                echo "Booking request '" . $referenceNumber . "' has been assigned! For '" . $driver_name . "'";
+                echo "Booking reference number: $referenceNumber <br> Pickup time: $pickUpTime <br> Pickup date: $pickUpDate";
             } else {
                 echo "Error Occurred = $conn->error";
             }
