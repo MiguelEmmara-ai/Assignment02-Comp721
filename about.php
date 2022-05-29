@@ -76,7 +76,7 @@ require 'includes/frontend/nav.php';
                         <h2>About us</h2>
                         <p style="color: rgb(0,0,0);"><strong><em>Trusted Cab Services in All World</em></strong><br></p>
                         <p>Cabs Online, The go-getters. We are a tech company that connects the physical and digital worlds to help make movement happen at the tap of a button. Because we believe in a world where movement should be accessible. So you can move and earn safely. In a way that’s sustainable for our planet. At Cabs Online, the pursuit of reimagination is never finished, never stops, and is always just beginning.</p>
-                        <a class="btn btn-primary" role="button" href="booking.php" style="margin-left: -4px;background: rgb(59,59,59);">Book A RIDE</a>
+                        <a class="btn btn-primary" role="button" href="booking.html" style="margin-left: -4px;background: rgb(59,59,59);">Book A RIDE</a>
                     </div><!-- End: Intro -->
                 </div>
                 <div class="col-sm-4">
