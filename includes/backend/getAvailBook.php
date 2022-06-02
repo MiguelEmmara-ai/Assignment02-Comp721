@@ -9,7 +9,7 @@
 | can access the page
 | all the define('MY_CONSTANT', 1) meaning pages that can be access.
 |
- */
+*/
 
 define('MY_CONSTANT', 1);
 
@@ -22,7 +22,7 @@ define('MY_CONSTANT', 1);
 | dbconf/settings.php
 | for connect to database
 |
- */
+*/
 
 require dirname(__FILE__) . "/../dbconf/settings.php";
 
@@ -35,7 +35,7 @@ require dirname(__FILE__) . "/../dbconf/settings.php";
 | * FROM passengers WHERE status = 'Unassigned'
 | then display it onto the table
 |
- */
+*/
 
 mysqli_select_db($conn, $dbnm);
 

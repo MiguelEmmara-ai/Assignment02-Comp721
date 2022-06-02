@@ -21,7 +21,7 @@
 | can access the page
 | all the define('MY_CONSTANT', 1) meaning pages that can be access.
 |
- */
+*/
 
 define('MY_CONSTANT', 1);
 
@@ -34,7 +34,7 @@ define('MY_CONSTANT', 1);
 | make dynamic title depending
 | on the page where user are on.
 |
- */
+*/
 
 $title = "Register Driver | Cabs Online";
 
@@ -47,7 +47,7 @@ $title = "Register Driver | Cabs Online";
 | frontend/header
 | for displaying the header
 |
- */
+*/
 
 require dirname(__FILE__) . "/includes/frontend/header.php";
 
@@ -60,7 +60,7 @@ require dirname(__FILE__) . "/includes/frontend/header.php";
 | backend/appFunction
 | We'll require it so we can access the methods inside
 |
- */
+*/
 
 require dirname(__FILE__) . "/includes/backend/appFunction.php";
 
@@ -73,7 +73,7 @@ require dirname(__FILE__) . "/includes/backend/appFunction.php";
 | backend/SQLfunction
 | We'll require it so we can access the methods inside
 |
- */
+*/
 
 require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
 
@@ -86,7 +86,7 @@ require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
 | Since aut server use older version of php 5.4, I need https://github.com/ircmaxell/password_compat
 | to use password functions supported in latest version of php
 |
- */
+*/
 
 require dirname(__FILE__) . "/includes/backend/password.php";
 
@@ -99,7 +99,8 @@ require dirname(__FILE__) . "/includes/backend/password.php";
 | create Table Drivers
 | If NotExist
 |
- */
+*/
+
 createTableIfDriversNotExist();
 
 /*
@@ -111,7 +112,7 @@ createTableIfDriversNotExist();
 | with empty values
 | this will use for the form initial values
 |
- */
+*/
 
 $email = $username = $password = $confirm_password = "";
 $email_err = $username_err = $password_err = $confirm_password_err = "";
@@ -130,7 +131,7 @@ if (isset($_POST['signUp-button'])) {
     | Register Driver
     | Booking To The Database
     |
-     */
+    */
 
     registerDrivers();
 }
