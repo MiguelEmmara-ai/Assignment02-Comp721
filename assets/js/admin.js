@@ -1,4 +1,10 @@
 /**
+ * Author: Muhamad Miguel Emmara
+ * Student ID: 18022146
+ * Email: ryf2144@autuni.ac.nz
+ */
+
+/**
  * This function shows all bookings by passing information to the server
  * @send XML object
  */

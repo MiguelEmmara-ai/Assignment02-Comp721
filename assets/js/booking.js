@@ -1,6 +1,12 @@
-/** 
- *
- * @returns XML object
+/**
+ * Author: Muhamad Miguel Emmara
+ * Student ID: 18022146
+ * Email: ryf2144@autuni.ac.nz
+ */
+
+/**
+ * Add Booking To booking.php to process further
+ * @send XML object
  */
 function addBooking() {
     var xhr = createRequest();
@@ -154,6 +160,33 @@ function validateTime(inputTime, currentTime) {
         return false;
     }
     return true;
+}
+
+/**
+ * Get Today Date in DD/MM/YYYY.
+ * @returns new Date().toDateInputValue();
+ */
+function getTodayDate() {
+    // Add this for correct timezone support
+    Date.prototype.toDateInputValue = (function () {
+        var local = new Date(this);
+        local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+        return local.toJSON().slice(0, 10);
+    });
+
+    return new Date().toDateInputValue();
+}
+
+/**
+ * Get Today Time Dependin On User Device Time Format.
+ * @returns time
+ */
+function getTodayTime() {
+    var today = new Date();
+    var hours = today.getHours();
+    var minutes = today.getMinutes();
+
+    return time = (hours < 10 ? `0${hours}` : hours) + ':' + (minutes < 10 ? `0${minutes}` : minutes);
 }
 
 /**

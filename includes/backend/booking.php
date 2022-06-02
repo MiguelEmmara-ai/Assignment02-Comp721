@@ -9,22 +9,87 @@
 | based on a session identifier passed via
 | a GET or POST request, or passed via a cookie.
 |
- */
+*/
 
 session_start();
 
 /*
 |--------------------------------------------------------------------------
-| Require dbconf/settings.php
+| Access Restriction
+|--------------------------------------------------------------------------
+|
+| Here is the declaration that user or visitor
+| can access the page
+| all the define('MY_CONSTANT', 1) meaning pages that can be access.
+|
+*/
+
+define('MY_CONSTANT', 1);
+
+/*
+|--------------------------------------------------------------------------
+| Set Time Zone To New Zealand
+|--------------------------------------------------------------------------
+|
+| Here we set default
+| timezone for the server side to be in
+| New Zealand.
+|
+*/
+
+date_default_timezone_set('Pacific/Auckland');
+
+/*
+|--------------------------------------------------------------------------
+| Require settings.php
 |--------------------------------------------------------------------------
 |
 | include file
-| dbconf/settings.php
+| settings.php
 | for connect to database
 |
- */
+*/
 
 require dirname(__FILE__) . "/settings.php";
+
+/*
+|--------------------------------------------------------------------------
+| Require appFunction
+|--------------------------------------------------------------------------
+|
+| include file
+| appFunction
+| We'll require it so we can access the methods inside
+|
+*/
+
+require dirname(__FILE__) . "/appFunction.php";
+
+/*
+|--------------------------------------------------------------------------
+| Require SQLfunction
+|--------------------------------------------------------------------------
+|
+| include file
+| SQLfunction
+| We'll require it so we can access the methods inside
+|
+*/
+
+require dirname(__FILE__) . "/SQLfunction.php";
+
+/*
+|--------------------------------------------------------------------------
+| createTablePassengersIfNotExist()
+|--------------------------------------------------------------------------
+|
+| This Function Will
+| create Table Passengers 
+| If NotExist
+|
+*/
+
+createTablePassengersIfNotExist();
 
 // Define variables and initialize with empty values
 $fName
@@ -45,9 +110,6 @@ $fName_err
     = $streetName_err
     = $suburb_err
     = $destinationSuburb_err = "";
-
-// Set Default Time Zone
-date_default_timezone_set('Pacific/Auckland');
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -216,44 +278,6 @@ VALUES
     $conn->close();
 }
 
-/**
- * sweetAlertMsg
- *
- * @param string   $title   The title of the popup, as HTML.
- * @param string   $text    A description for the popup. If text and html parameters are provided in the same time, html will be used.
- * @param string   $icon    The icon of the popup. SweetAlert2 comes with 5 built-in icon which will show a corresponding icon animation: warning, error, success, info, and question.
- * @param string   $btn    Button Text.
- *
- *
- * @author     Muhamad Miguel Emmara - 180221456 <ryf2144@autuni.ac.nz>
- */
-function sweetAlertMsg($title, $text, $icon, $btn)
-{
-    echo '
-    <script type="text/javascript">
 
-    $(document).ready(function(){
 
-        swal({
-            html: true,
-            title: "' . $title . '",
-            text: "' . $text . '",
-            icon: "' . $icon . '",
-            button: "' . $btn . '",
-        })
-          });
 
-    </script>
-    ';
-}
-
-/**
- * Check for unique reference number in database.
- * using the input '$referenceNumber'
- * as key and search across database.
- */
-function uniqueRefCheck($conn, $sql_table, $referenceNumber)
-{
-    $searchQuery = "SELECT * FROM $sql_table WHERE bookingRefNo = '$referenceNumber'";
-    return mysqli_query($conn, $searchQuery)->num_rows === 0;
-}

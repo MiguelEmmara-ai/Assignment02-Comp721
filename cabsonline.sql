@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2022 at 02:24 PM
+-- Generation Time: Jun 02, 2022 at 09:59 AM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.28
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `drivers` (
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `carsAvailability` varchar(200) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -41,11 +41,7 @@ CREATE TABLE `drivers` (
 --
 
 INSERT INTO `drivers` (`id`, `email`, `username`, `password`, `carsAvailability`, `created_at`) VALUES
-(1, 'admin@gmail.com', 'admin', '$2y$10$GbdRvbYxBxcP8ARGmTg8I.RPKmsw3IUyWuMACbQQ/VecofbBMUeau', 'Scooter, Hatch Back, Suv, Sedan, Van', '2022-04-26 01:25:22'),
-(2, 'ferguso@gmail.com', 'ferguso', '$2y$10$XfgkO8A2MT/jY5MTw/JyR.eMLj.UTmF6GywG88wawJwduRMIBoiy6', 'Suv, Sedan, Van', '2022-04-26 01:35:52'),
-(3, 'ahmad@gmail.com', 'ahmad', '$2y$10$EEDwHn6OMqIMsvrkjh6svu.6Qx7FyaJxgvP.T9rIa5y8a8ESUqkFC', 'Suv, Van', '2022-04-26 23:59:47'),
-(4, 'shituber@gmail.com', 'test1', '$2y$10$mdggxjGOirEVb0H2eXvb.e.oikvaOdbYFsj0FdLdCN9WtBmoh9yIi', 'Scooter, Suv, Sedan', '2022-04-27 22:08:07'),
-(5, 'testingtesting@gmail.com', 'test2', '$2y$10$QVPouycRylJPix0.Qat/Vu/YblnTb14IwoPAdpwSpUXa/k4lR9HwO', 'Scooter, Suv, Sedan', '2022-04-27 22:08:28');
+(1, 'admin@admin.com', 'admin', '$2y$10$B8MluZWXfKieSLCLM3G7V.oFVbIG6JJ5t7EV3ViRzycuBL3cfw/Su', 'Scooter, Hatch Back, Suv, Sedan, Van', '2022-06-02 07:57:48');
 
 -- --------------------------------------------------------
 
@@ -74,16 +70,8 @@ CREATE TABLE `passengers` (
 --
 
 INSERT INTO `passengers` (`bookingRefNo`, `customerName`, `phoneNumber`, `unitNumber`, `streetNumber`, `streetName`, `suburb`, `destinationSuburb`, `pickUpDate`, `pickUpTime`, `status`, `carsNeed`, `assignedBy`) VALUES
-('BRN00555', 'fghgf hsgdrg', 2147483647, '3463463', '3456345634', 'tfhhtffhth', 'thtyjhdrfh', 'rtdhrtdhrth', '2022-04-26', '23:57:00', 'Assigned', 'Hatchback', 'admin'),
-('BRN02676', 'testimoni testimoni', 4444444, '4444444', '4444444', 'testimoni', 'testimoni', 'testimoni', '2022-04-29', '15:31:00', 'Assigned', 'Scooter', ''),
-('BRN03605', 'efgefg dfgdefawgdef', 234532532, '25235', '23523523', '365236', 'rtsgsdfv', 'rgrbv', '2022-05-03', '19:08:00', 'Assigned', 'Suv', ''),
-('BRN03797', 'testimoni testimoni', 4444444, '4444444', '4444444', 'testimoni', 'testimoni', 'testimoni', '2022-04-29', '15:31:00', 'Assigned', 'Scooter', ''),
-('BRN04439', 'efgefg dfgdefawgdef', 234532532, '25235', '23523523', '365236', 'rtsgsdfv', 'rgrbv', '2022-05-02', '21:10:00', 'Assigned', 'Scooter', ''),
-('BRN05467', 'testimoni testimoni', 4444444, '4444444', '4444444', 'testimoni', 'testimoni', 'testimoni', '2022-04-29', '13:37:00', 'Assigned', 'Scooter', ''),
-('BRN06141', 'testimoni testimoni', 4444444, '4444444', '4444444', 'testimoni', 'testimoni', 'testimoni', '2022-04-30', '15:39:00', 'Assigned', 'Scooter', ''),
-('BRN06474', 'testimoni testimoni', 4444444, '4444444', '4444444', 'testimoni', 'testimoni', 'testimoni', '2022-04-27', '16:29:00', 'Assigned', 'Scooter', ''),
-('BRN07401', 'testimoni testimoni', 2147483647, '55555555555', '55555555555', 'testimoni', 'testimoni', 'testimoni', '2022-04-27', '18:27:00', 'Assigned', 'Scooter', ''),
-('BRN99862', 'Test One', 1, '1', '1', 'One', 'One', 'One', '2022-04-26', '01:29:00', 'Assigned', 'Suv', 'admin');
+('BRN06757', 'Test One', 22123456, '123', '321', 'Test', 'Test', 'Test', '2022-06-02', '20:00:00', 'Unassigned', 'Sedan', 'None'),
+('BRN23502', 'Test Two', 229876543, '', '512', 'Test', '', 'Test', '2022-06-02', '20:25:00', 'Unassigned', 'Van', 'None');
 
 --
 -- Indexes for dumped tables
@@ -111,7 +99,7 @@ ALTER TABLE `passengers`
 -- AUTO_INCREMENT for table `drivers`
 --
 ALTER TABLE `drivers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
