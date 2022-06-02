@@ -53,3 +53,20 @@ CREATE TABLE IF NOT EXISTS passengers(
 
         $sql = "SELECT id, username, password FROM drivers WHERE username = ?";
         $sql = "SELECT id FROM drivers WHERE username = ?";
+
+        $sql = "INSERT INTO $sql_table (
+    bookingRefNo, customerName, phoneNumber,
+    unitNumber, streetNumber, streetName,
+    suburb, destinationSuburb, pickUpDate,
+    pickUpTime, status, carsNeed, assignedBy
+)
+VALUES
+    (
+        '$referenceNumber', '$customerName',
+        '$phoneNumber', '$unitNumber', '$streetNumber',
+        '$streetName', '$suburb', '$destinationSuburb',
+        '$pickUpDate', '$pickUpTime', '$status', '$cars', '$assignedBy'
+    )
+";
+
+$sql = "INSERT INTO drivers (email, username, password, carsAvailability) VALUES (?, ?, ?, ?)";
