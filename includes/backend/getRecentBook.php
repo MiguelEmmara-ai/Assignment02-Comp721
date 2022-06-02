@@ -9,7 +9,7 @@
 | can access the page
 | all the define('MY_CONSTANT', 1) meaning pages that can be access.
 |
- */
+*/
 
 define('MY_CONSTANT', 1);
 
@@ -22,7 +22,7 @@ define('MY_CONSTANT', 1);
 | dbconf/settings.php
 | for connect to database
 |
- */
+*/
 
 require dirname(__FILE__) . "/../dbconf/settings.php";
 
@@ -39,7 +39,7 @@ require dirname(__FILE__) . "/../dbconf/settings.php";
 | hence, it will compare the booking time and date with the server time
 | depending where this app installed on the server is, it will make a difference
 |
- */
+*/
 
 mysqli_select_db($conn, $dbnm);
 

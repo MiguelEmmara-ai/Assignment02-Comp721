@@ -277,7 +277,3 @@ VALUES
     // Close connection
     $conn->close();
 }
-
-
-
-
