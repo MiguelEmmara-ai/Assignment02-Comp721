@@ -9,7 +9,7 @@
 | can access the page
 | all the (!defined('MY_CONSTANT')) meaning pages that CANNOT be access.
 |
- */
+*/
 
 if (!defined('MY_CONSTANT')) {
     // You can show a message
@@ -44,7 +44,7 @@ function uniqueRefCheck($conn, $sql_table, $referenceNumber)
 function createTablePassengersIfNotExist()
 {
     // Include config file
-    require "includes/dbconf/settings.php";
+    require dirname(__FILE__) . "/settings.php";
 
     // Check if Table Exists
     $query = "SELECT * FROM passengers";
@@ -65,7 +65,8 @@ function createTablePassengersIfNotExist()
             pickUpTime TIME NOT NULL,
             status ENUM('Assigned','Unassigned') NOT NULL,
             carsNeed ENUM('Scooter','Hatchback','Suv','Sedan','Van') NOT NULL,
-            assignedBy TEXT NOT NULL
+            assignedBy TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         ) ENGINE = InnoDB DEFAULT CHARSET = latin1;";
 
         if ($conn->query($sql) === true) {
@@ -91,7 +92,7 @@ function createTablePassengersIfNotExist()
 function createTableIfDriversNotExist()
 {
     // Include config file
-    require "includes/dbconf/settings.php";
+    require dirname(__FILE__) . "/settings.php";
 
     // Check if Table Exists
     $query = "SELECT * FROM drivers";
@@ -172,7 +173,7 @@ function addPassengers()
         = $destinationSuburb_err = "";
 
     // Include config file
-    require "includes/dbconf/settings.php";
+    require dirname(__FILE__) . "/settings.php";
 
     date_default_timezone_set('Pacific/Auckland');
 
@@ -352,7 +353,7 @@ VALUES
 function loginDrivers()
 {
     // Include config file
-    require "includes/dbconf/settings.php";
+    require dirname(__FILE__) . "/settings.php";
 
     // Processing form data when form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -437,7 +438,7 @@ function loginDrivers()
 function registerDrivers()
 {
     // Include config file
-    require "includes/dbconf/settings.php";
+    require dirname(__FILE__) . "/settings.php";
 
     // Define variables and initialize with empty values
     global $email;
@@ -578,7 +579,7 @@ function registerDrivers()
 function assignBookingManual($bookingRefNo)
 {
     // Include config file
-    require "includes/dbconf/settings.php";
+    require dirname(__FILE__) . "/settings.php";
 
     // Check if bookingRefNo input by user in the text box
     if (isset($_POST["bsearch"]) && !empty($_POST["bsearch"])) {
