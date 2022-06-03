@@ -8,7 +8,7 @@
 -->
 
 <?php
-if (file_exists('includes/dbconf/settings.php')) {
+if (file_exists('includes/dbconf/settings.php') && file_exists('includes/backend/settings.php')) {
     header('location:index.php');
     die();
 }
