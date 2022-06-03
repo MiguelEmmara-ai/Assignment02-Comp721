@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS passengers(
         assignedBy TEXT NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
-    # Additional queries #
+    # Additional Queries #
 
         $searchQuery = "SELECT * FROM $sql_table WHERE bookingRefNo = '$referenceNumber'";
     return mysqli_query($conn, $searchQuery)->num_rows === 0;
@@ -53,6 +53,9 @@ CREATE TABLE IF NOT EXISTS passengers(
 
         $sql = "SELECT id, username, password FROM drivers WHERE username = ?";
         $sql = "SELECT id FROM drivers WHERE username = ?";
+        $sql = "INSERT INTO drivers (email, username, password, carsAvailability) VALUES (?, ?, ?, ?)";
+
+    # Insert Queries #
 
         $sql = "INSERT INTO $sql_table (
     bookingRefNo, customerName, phoneNumber,
@@ -68,5 +71,3 @@ VALUES
         '$pickUpDate', '$pickUpTime', '$status', '$cars', '$assignedBy'
     )
 ";
-
-$sql = "INSERT INTO drivers (email, username, password, carsAvailability) VALUES (?, ?, ?, ?)";

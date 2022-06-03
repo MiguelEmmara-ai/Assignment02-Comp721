@@ -57,7 +57,10 @@ if (!defined('MY_CONSTANT')) {
             <div class="col item social"><a href="https://github.com/MiguelEmmara-ai" target="_blank"><i class="icon ion-social-github"></i></a></div><!-- End: Social Icons -->
         </div>
         <!-- Start: Copyright -->
-        <p class="copyright">Muhamad Miguel Emmara © 2022 - Made With <i class="fas fa-heart"></i></p><!-- End: Copyright -->
+        <p class="copyright">Muhamad Miguel Emmara © 2022 - Made With <i class="fas fa-heart"></i></p>
+        <!-- Version Note -->
+        <p class="copyright">V2.6</p>
+        <!-- End: Copyright -->
     </div>
 </footer>
 <!-- End: Footer Dark -->
@@ -65,4 +68,3 @@ if (!defined('MY_CONSTANT')) {
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script src="assets/js/script.min.js"></script>
-
