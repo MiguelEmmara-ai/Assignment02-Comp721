@@ -21,7 +21,7 @@
 | can access the page
 | all the define('MY_CONSTANT', 1) meaning pages that can be access.
 |
- */
+*/
 
 define('MY_CONSTANT', 1);
 
@@ -34,7 +34,7 @@ define('MY_CONSTANT', 1);
 | based on a session identifier passed via
 | a GET or POST request, or passed via a cookie.
 |
- */
+*/
 
 session_start();
 
@@ -47,7 +47,7 @@ session_start();
 | make dynamic title depending
 | on the page where user are on.
 |
- */
+*/
 
 $title = "Login Drivers | Cabs Online";
 
@@ -60,7 +60,7 @@ $title = "Login Drivers | Cabs Online";
 | frontend/header
 | for displaying the header
 |
- */
+*/
 
 require dirname(__FILE__) . "/includes/frontend/header.php";
 
@@ -73,7 +73,7 @@ require dirname(__FILE__) . "/includes/frontend/header.php";
 | backend/appFunction
 | We'll require it so we can access the methods inside
 |
- */
+*/
 
 require dirname(__FILE__) . "/includes/backend/appFunction.php";
 
@@ -86,7 +86,7 @@ require dirname(__FILE__) . "/includes/backend/appFunction.php";
 | backend/SQLfunction
 | We'll require it so we can access the methods inside
 |
- */
+*/
 
 require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
 
@@ -99,7 +99,7 @@ require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
 | Since aut server use older version of php 5.4, I need https://github.com/ircmaxell/password_compat
 | to use password functions supported in latest version of php
 |
- */
+*/
 
 require dirname(__FILE__) . "/includes/backend/password.php";
 
@@ -112,7 +112,8 @@ require dirname(__FILE__) . "/includes/backend/password.php";
 | create Table Drivers
 | If NotExist
 |
- */
+*/
+
 createTableIfDriversNotExist();
 
 /*
@@ -124,7 +125,8 @@ createTableIfDriversNotExist();
 | if yes then redirect
 | the user to the admin page
 |
- */
+*/
+
 checkUserLoggedInRedirect();
 ?>
 
@@ -140,7 +142,7 @@ checkUserLoggedInRedirect();
 | frontend/nav
 | for displaying the navbar
 |
- */
+*/
 
 require "includes/frontend/nav.php";
 
@@ -160,7 +162,7 @@ require "includes/frontend/nav.php";
 | with empty values
 | this will use for the form initial values
 |
- */
+*/
 
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
@@ -202,7 +204,7 @@ if (!empty($login_err)) {
 | frontend/footer
 | for displaying the footer
 |
- */
+*/
 
 require 'includes/frontend/footer.php';
 

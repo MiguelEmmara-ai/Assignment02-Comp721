@@ -13,7 +13,7 @@ $dbnm = "db_name";
 | setup for your application, simple mysqli connection setup make development simple.
 | all the variable here will be changed to settings.php through installation script
 |
- */
+*/
 
 $conn = new mysqli($host, $user, $pswd, $dbnm);
 

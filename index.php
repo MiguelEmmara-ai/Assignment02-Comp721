@@ -21,7 +21,7 @@
 | can access the page
 | all the define('MY_CONSTANT', 1) meaning pages that can be access.
 |
- */
+*/
 
 define('MY_CONSTANT', 1);
 
@@ -34,7 +34,7 @@ define('MY_CONSTANT', 1);
 | make dynamic title depending
 | on the page where user are on.
 |
- */
+*/
 
 $title = "Cabs Online | Book A Taxi Ride With Us Today!";
 
@@ -47,11 +47,12 @@ $title = "Cabs Online | Book A Taxi Ride With Us Today!";
 | frontend/header
 | for displaying the header
 |
- */
-require dirname(__FILE__) . "/includes/frontend/header.php";?>
+*/
+
+require dirname(__FILE__) . "/includes/frontend/header.php"; ?>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
-<?php
+    <?php
 
 /*
 |--------------------------------------------------------------------------
@@ -62,10 +63,10 @@ require dirname(__FILE__) . "/includes/frontend/header.php";?>
 | frontend/nav
 | for displaying the navbar
 |
- */
+*/
 
-require 'includes/frontend/nav.php';
-?>
+    require 'includes/frontend/nav.php';
+    ?>
     <!-- Start: Header Blue -->
     <header class="header-blue">
         <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
@@ -244,7 +245,7 @@ require 'includes/frontend/nav.php';
         <h3 id="seen" class="text-center">As Seen On</h3>
         <div class="container">
             <div class="row">
-            <div class="col-sm-6 col-md-3"><a href="https://www.google.com/" target="_blank"><img class="img-fluid d-block mx-auto" src="assets/img/clients/google.jpg"></a></div>
+                <div class="col-sm-6 col-md-3"><a href="https://www.google.com/" target="_blank"><img class="img-fluid d-block mx-auto" src="assets/img/clients/google.jpg"></a></div>
                 <div class="col-sm-6 col-md-3"><a href="https://www.facebook.com/" target="_blank"><img class="img-fluid d-block mx-auto" src="assets/img/clients/facebook.jpg"></a></div>
                 <div class="col-sm-6 col-md-3"><a href="https://www.airbnb.co.nz/" target="_blank"><img class="img-fluid d-block mx-auto" src="assets/img/clients/airbnb.jpg"></a></div>
                 <div class="col-sm-6 col-md-3"><a href="https://www.netflix.com/" target="_blank"><img class="img-fluid d-block mx-auto" src="assets/img/clients/netflix.jpg"></a></div>
@@ -304,11 +305,11 @@ require 'includes/frontend/nav.php';
 | frontend/footer
 | for displaying the footer
 |
- */
+*/
 
-require 'includes/frontend/footer.php';
+    require 'includes/frontend/footer.php';
 
-?>
+    ?>
 </body>
 
 </html>

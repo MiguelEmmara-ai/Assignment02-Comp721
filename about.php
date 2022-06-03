@@ -21,7 +21,7 @@
 | can access the page
 | all the define('MY_CONSTANT', 1) meaning pages that can be access.
 |
- */
+*/
 
 define('MY_CONSTANT', 1);
 
@@ -34,7 +34,7 @@ define('MY_CONSTANT', 1);
 | make dynamic title depending
 | on the page where user are on.
 |
- */
+*/
 
 $title = "About Cabs Online";
 
@@ -47,11 +47,12 @@ $title = "About Cabs Online";
 | frontend/header
 | for displaying the header
 |
- */
-require dirname(__FILE__) . "/includes/frontend/header.php";?>
+*/
+
+require dirname(__FILE__) . "/includes/frontend/header.php"; ?>
 
 <body>
-<?php
+    <?php
 
 /*
 |--------------------------------------------------------------------------
@@ -62,10 +63,10 @@ require dirname(__FILE__) . "/includes/frontend/header.php";?>
 | frontend/nav
 | for displaying the navbar
 |
- */
+*/
 
-require 'includes/frontend/nav.php';
-?>
+    require 'includes/frontend/nav.php';
+    ?>
     <!-- Start: Highlight Phone -->
     <section class="highlight-phone" style="background: rgb(254,251,240);height: 653px;padding-top: 113px;">
         <div class="container">
@@ -103,7 +104,7 @@ require 'includes/frontend/nav.php';
         </div>
     </section>
 
-<?php
+    <?php
 
 /*
 |--------------------------------------------------------------------------
@@ -114,11 +115,11 @@ require 'includes/frontend/nav.php';
 | frontend/footer
 | for displaying the footer
 |
- */
+*/
 
-require 'includes/frontend/footer.php';
+    require 'includes/frontend/footer.php';
 
-?>
+    ?>
 </body>
 
 </html>

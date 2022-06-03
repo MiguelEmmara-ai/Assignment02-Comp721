@@ -18,7 +18,7 @@
 | can access the page
 | all the define('MY_CONSTANT', 1) meaning pages that can be access.
 |
- */
+*/
 
 define('MY_CONSTANT', 1);
 
@@ -31,7 +31,7 @@ define('MY_CONSTANT', 1);
 | based on a session identifier passed via
 | a GET or POST request, or passed via a cookie.
 |
- */
+*/
 
 session_start();
 
@@ -44,7 +44,7 @@ session_start();
 | make dynamic title depending
 | on the page where user are on.
 |
- */
+*/
 
 $title = "Logging Out...";
 
@@ -57,7 +57,7 @@ $title = "Logging Out...";
 | frontend/header
 | for displaying the header
 |
- */
+*/
 
 require dirname(__FILE__) . "/includes/frontend/header.php";
 
@@ -70,7 +70,7 @@ require dirname(__FILE__) . "/includes/frontend/header.php";
 | backend/appFunction
 | We'll require it so we can access the methods inside
 |
- */
+*/
 
 require dirname(__FILE__) . "/includes/backend/appFunction.php";
 
@@ -83,7 +83,7 @@ require dirname(__FILE__) . "/includes/backend/appFunction.php";
 | backend/SQLfunction
 | We'll require it so we can access the methods inside
 |
- */
+*/
 
 require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
 
@@ -96,6 +96,8 @@ require dirname(__FILE__) . "/includes/backend/SQLfunction.php";
 | if true, we display error
 | if not then logoutDrivers
 |
- */
+*/
+
 logoutDrivers();
+
 ?>
