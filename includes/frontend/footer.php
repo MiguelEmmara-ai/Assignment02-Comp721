@@ -58,6 +58,7 @@ if (!defined('MY_CONSTANT')) {
         </div>
         <!-- Start: Copyright -->
         <p class="copyright">Muhamad Miguel Emmara © 2022 - Made With <i class="fas fa-heart"></i></p>
+        <!-- Version Note -->
         <p class="copyright">V2.6</p>
         <!-- End: Copyright -->
     </div>
